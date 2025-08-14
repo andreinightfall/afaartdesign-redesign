@@ -1,0 +1,87 @@
+/* ===============================
+   Compact Gallery Grid (squares)
+   =============================== */
+
+/* Space between the toggle button and the grid */
+#gallery-section {
+  margin-top: 12px; /* small gap so images don't stick to the button */
+}
+
+/* Optional: make the button look nice with the icon */
+#toggle-gallery {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;          /* space between icon and label */
+}
+#toggle-gallery i {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/* Root grid: many tiny squares per row, with gaps */
+#legacy-gallery{
+  display: grid !important;
+
+  /* Tweak these to your taste */
+  --gal-tile: 64px;           /* tile size: try 56–72px for 8–12 per row on desktop */
+  --gal-col-gap: 6px;         /* horizontal space between tiles */
+  --gal-row-gap: 8px;         /* vertical space between tiles */
+
+  grid-template-columns: repeat(auto-fill, var(--gal-tile)) !important;
+  column-gap: var(--gal-col-gap) !important;
+  row-gap: var(--gal-row-gap) !important;
+
+  justify-content: center;    /* center the whole grid; use 'start' to left-align */
+  align-items: start;
+}
+
+/* Kill any legacy masonry/grid rules that forced 2–3 items/row */
+#legacy-gallery > *{ grid-column: auto !important; }
+
+/* Each item: square card with hover lift */
+#legacy-gallery a{
+  position: relative;
+  display: block;
+  aspect-ratio: 1 / 1;        /* perfect squares */
+  overflow: hidden;
+  border-radius: 8px;         /* optional rounded corners */
+  background: #eee;           /* skeleton bg before image loads */
+  box-shadow: 0 1px 2px rgba(0,0,0,.06);
+  transition: transform .15s ease, box-shadow .15s ease;
+  will-change: transform;
+  box-sizing: border-box;
+}
+
+#legacy-gallery a:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(0,0,0,.12);
+}
+
+#legacy-gallery a:focus-visible{
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+/* Thumbnail image fills and crops nicely into the square */
+#legacy-gallery img{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;          /* crop to square without distortion */
+  object-position: center;    /* change to 'center top' if many subjects are near top */
+  filter: saturate(1.02);
+  transition: transform .25s ease;
+}
+
+/* Keep the hover zoom on the image */
+#legacy-gallery a:hover img{
+  transform: scale(1.03);
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce){
+  #legacy-gallery a,
+  #legacy-gallery img{
+    transition: none;
+  }
+}

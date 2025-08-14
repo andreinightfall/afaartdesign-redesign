@@ -1,0 +1,25 @@
+# Node & build
+node_modules/
+npm-debug.log*
+dist/
+build/
+.tmp/
+.cache/
+
+# Env & secrets
+.env
+.env.*.local
+
+# OS/IDE
+.DS_Store
+Thumbs.db
+*.code-workspace
+.vscode/
+
+# Output local
+assets/css-clean/
+assets/img/thumbnails/
+*.log
+
+# Misc
+coverage/

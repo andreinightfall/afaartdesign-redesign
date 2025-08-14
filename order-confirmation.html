@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Comanda a fost plasată</title>
+  <link rel="stylesheet" href="assets/css/satoshi.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <style>
+    /* Prevenim orice overlay să blocheze click pe butonul de întoarcere */
+    .card{ position: relative; z-index: 2; }
+    body{padding:20px}
+    .card{background:var(--panel);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:16px;max-width:720px;margin:auto}
+  </style>
+  <link rel="stylesheet" href="assets/css/checkout.css">
+</head>
+<body class="checkout-page">
+  <div class="card">
+    <h1>Mulțumim! ✅</h1>
+    <p>Comanda ta a fost înregistrată.</p>
+    <p id="orderInfo"></p>
+    <a class="btn" href="index.html">Înapoi la magazin</a>
+  </div>
+  <script>
+    // Citește id-ul comenzii și golește coșul
+    const params = new URLSearchParams(location.search);
+    const id = params.get('id') || '';
+    if(id) document.getElementById('orderInfo').textContent = 'Număr comandă: ' + id;
+    try{ localStorage.removeItem('afa_cart_v1'); }catch(e){}
+  </script>
+</body>
+</html>

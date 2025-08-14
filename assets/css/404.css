@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,700,900");
+
+/* General Styling */
+body {
+    font-family: "Raleway", sans-serif;
+    font-size: 1.2em;
+    color: #707070;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: rgba(173, 216, 230, 0.2); /* Very light transparent blue */
+    overflow: hidden;
+}
+
+/* Main Section */
+
+/* Titles */
+
+/* Paragraph */
+
+/* Button */
+
+/* Responsive Design */

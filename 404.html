@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ro" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pagina nu a fost găsită — Afa Art Design</title>
+
+  <!-- Folosește stylesheet-ul principal, dar avem și protecții locale -->
+  <link rel="stylesheet" href="assets/css/main.css" />
+
+  <!-- Font Awesome (dacă nu e deja global) -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    /* ====== 404: izolare de restul site-ului ====== */
+    .page-404{
+      position: relative;
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      padding: 48px 16px;
+      overflow: hidden;
+      background: var(--bg, #0b0c0f);
+      color: var(--text, #e9eef5);
+    }
+    .page-404 .wrap{
+      max-width: 920px;
+      width: min(100%, 100% - 2rem);
+      text-align: center;
+      display: grid;
+      gap: 16px;
+      z-index: 1; /* peste decor */
+    }
+
+    /* Titlul 404 cu gradient pe text */
+    .page-404 .error-code{
+      margin: 0;
+      font-weight: 900;
+      font-size: clamp(4rem, 16vw, 10rem);
+      line-height: .9;
+      background: linear-gradient(135deg,
+        color-mix(in oklab, var(--brand, #7dd3fc), white 12%),
+        color-mix(in oklab, var(--brand-2, #c084fc), white 12%)
+      );
+      background-clip: text;            /* standard */
+      -webkit-background-clip: text;    /* webkit */
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -2px;
+    }
+
+    .page-404 .message{
+      font-size: clamp(1.05rem, 2.3vw, 1.25rem);
+      opacity: .95;
+    }
+    .page-404 .hint{
+      color: var(--muted, #a5afbd);
+      margin-top: .25rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Butoane — compatibile cu .btn din site;
+       adaugăm doar stratul “magnetic pale on hover” local */
+    .page-404 .btn{
+      position: relative;
+      overflow: hidden;
+    }
+    .page-404 .btn::before{
+      content:"";
+      position:absolute; inset:0;
+      background: transparent;           /* implicit invizibil */
+      opacity: 0;
+      transition: opacity .25s ease, transform .25s ease, background .25s ease;
+      pointer-events: none;
+    }
+    .page-404 .btn.magnetic-green:hover::before{
+      background: radial-gradient(280px 140px
+        at var(--mx,50%) var(--my,50%),
+        rgba(0, 255, 153, .25), transparent 65%);
+      opacity: 1;
+    }
+    .page-404 .btn.magnetic-blue:hover::before{
+      background: radial-gradient(280px 140px
+        at var(--mx,50%) var(--my,50%),
+        rgba(80, 170, 255, .25), transparent 65%);
+      opacity: 1;
+    }
+    .page-404 .btn-row{
+      display: flex; flex-wrap: wrap;
+      gap: 12px; justify-content: center;
+      margin-top: .5rem;
+    }
+
+    /* Decor aurora discret (nu afectează conținutul) */
+    .page-404::after{
+      content:"";
+      position:absolute; inset:-10%;
+      pointer-events:none; z-index:0;
+      mix-blend-mode: screen;
+      background:
+        radial-gradient(1200px 400px at 15% -10%,
+          color-mix(in oklab, var(--brand, #7dd3fc), transparent 85%), transparent 60%),
+        radial-gradient(900px 300px at 85% 0%,
+          color-mix(in oklab, var(--brand-2, #c084fc), transparent 86%), transparent 60%);
+      filter: blur(2px);
+      opacity: .5;
+      animation: aurora404 18s ease-in-out infinite alternate;
+    }
+    @keyframes aurora404{
+      0%   { transform: translateY(0) translateX(0); }
+      100% { transform: translateY(8px) translateX(-6px); }
+    }
+
+    /* Mobile spacing */
+    @media (max-width: 600px){
+      .page-404{ padding: 40px 12px; }
+      .page-404 .btn-row{ gap: 10px; }
+    }
+
+    /* Reduce motion respect */
+    @media (prefers-reduced-motion: reduce){
+      .page-404::after{ animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="page-404" role="main">
+    <div class="wrap">
+      <h1 class="error-code">404</h1>
+      <p class="message">Ups… pagina pe care o cauți nu există sau a fost mutată.</p>
+      <p class="hint">Îți recomandăm să revii pe pagina principală sau să ne scrii direct.</p>
+
+      <div class="btn-row">
+        <a href="/" class="btn ghost magnetic-green">
+          <i class="fa-solid fa-house" aria-hidden="true"></i> Înapoi acasă
+        </a>
+        <a href="/#contact" class="btn ghost magnetic-blue">
+          <i class="fa-regular fa-comment-dots" aria-hidden="true"></i> Contactează-ne
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+  // Efect magnetic minimal pentru butoanele de pe 404 (fără dependențe externe)
+  (()=>{
+    const targets = document.querySelectorAll('.page-404 .btn.magnetic-green, .page-404 .btn.magnetic-blue');
+    if(!targets.length) return;
+    let active = null, px=0, py=0, ticking=false;
+
+    function setVars(el, x, y){
+      const r = el.getBoundingClientRect();
+      el.style.setProperty('--mx', ((x - r.left) / r.width * 100) + '%');
+      el.style.setProperty('--my', ((y - r.top)  / r.height * 100) + '%');
+    }
+    function onEnter(e){ active = e.currentTarget; }
+    function onLeave(){ active = null; }
+
+    targets.forEach(el=>{
+      el.addEventListener('pointerenter', onEnter);
+      el.addEventListener('pointerleave', onLeave);
+    });
+
+    window.addEventListener('pointermove', (e)=>{
+      if(!active) return;
+      px = e.clientX; py = e.clientY;
+      if(!ticking){
+        requestAnimationFrame(()=>{ if(active) setVars(active, px, py); ticking=false; });
+        ticking = true;
+      }
+    }, {passive:true});
+  })();
+  </script>
+</body>
+</html>

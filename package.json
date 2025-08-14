@@ -1,0 +1,35 @@
+{
+  "name": "afaartdesign-concept-redesign",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "server.js",
+  "description": "Afa Art Design - frontend + backend cu NETOPIA și FAN Courier",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "thumbs": "node scripts/make-thumbs.mjs",
+    "thumbs:webp": "node scripts/make-thumbs.mjs --format=webp",
+    "thumbs:big": "node scripts/make-thumbs.mjs --width=720 --quality=80",
+    "thumbs:force": "node scripts/make-thumbs.mjs --force",
+    "thumbs:clean": "rm -rf assets/img/thumbnails/* && npm run thumbs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fancyapps/ui": "^6.0.4",
+    "bootstrap": "^5.3.5",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "lightgallery": "^2.9.0-beta.1",
+    "magnific-popup": "^1.2.0",
+    "netopia-card": "^2.1.2",
+    "node-fetch": "^3.3.2",
+    "sharp": "^0.34.3"
+  },
+  "devDependencies": {
+    "htmlhint": "^1.1.4",
+    "nodemon": "^3.1.0"
+  }
+}

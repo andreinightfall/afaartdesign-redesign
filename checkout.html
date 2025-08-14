@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checkout • Afa Art Design</title>
+  <link rel="stylesheet" href="assets/css/satoshi.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/checkout.css">
+  <style>
+    /* Styling minimalist, fără pseudo-elemente problematice */
+    body.checkout-page{ padding: 24px; }
+    .wrap{ max-width: 1100px; margin: auto; display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
+    .card{ background: var(--panel); border:1px solid rgba(255,255,255,.08); border-radius: 14px; padding: 16px; position: relative; }
+    .card h2{ margin: 6px 0 12px; }
+    table{ width:100%; border-collapse: collapse; }
+    th, td{ padding: 10px; border-bottom:1px solid rgba(255,255,255,.08); }
+    input, select, textarea{ width: 100%; padding: 10px; border-radius: 10px; border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.03); color: var(--text); }
+    label{ font-weight: 700; font-size: .95rem; display:block; margin-bottom:6px; }
+    .grid{ display:grid; gap:12px; grid-template-columns: 1fr 1fr; }
+    .grid-1{ grid-template-columns: 1fr; }
+    .actions{ display:flex; gap:10px; align-items:center; flex-wrap: wrap; }
+    .btn{ cursor:pointer; padding:.7rem 1rem; border-radius: 10px; border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.06); }
+    .btn.ghost{ background: transparent; }
+    .badge{ display:inline-flex; align-items:center; gap:.4rem; font-weight:700; }
+    tfoot td{ font-weight:600; }
+    .paymethods{ display:flex; gap:12px; flex-wrap:wrap; }
+    .paymethods label{ display:flex; gap:8px; align-items:center; padding:.5rem .75rem; border:1px solid rgba(255,255,255,.12); border-radius:10px; cursor:pointer; background: rgba(255,255,255,.03); }
+    .paymethods input{ width:auto; }
+    .muted{ opacity:.8; font-size:.9rem; }
+  </style>
+</head>
+<body class="checkout-page">
+  <h1>Finalizare comandă</h1>
+  <div class="wrap">
+    <section class="card">
+      <h2>Date de livrare</h2>
+      <form id="checkoutForm" class="grid-1">
+        <div class="grid">
+          <div>
+            <label>Nume</label>
+            <input name="firstName" autocomplete="given-name" required>
+          </div>
+          <div>
+            <label>Prenume</label>
+            <input name="lastName" autocomplete="family-name" required>
+          </div>
+        </div>
+        <label>Email</label>
+        <input type="email" name="email" autocomplete="email" required>
+        <label>Telefon</label>
+        <input name="phone" autocomplete="tel" required>
+        <label>Adresă</label>
+        <input name="address" autocomplete="street-address" required>
+        <div class="grid">
+          <div>
+            <label>Oraș</label>
+            <input name="city" autocomplete="address-level2" required>
+          </div>
+          <div>
+            <label>Județ</label>
+            <input name="county" autocomplete="address-level1" required>
+          </div>
+        </div>
+        <div class="grid">
+          <div>
+            <label>Cod poștal</label>
+            <input name="zip" autocomplete="postal-code" required>
+          </div>
+          <div>
+            <label>Curier</label>
+            <input value="FAN Courier" disabled>
+            <input type="hidden" name="courier" value="fan">
+          </div>
+        </div>
+        <label>Observații</label>
+        <textarea name="notes" rows="3" placeholder="Detalii livrare, interval orar etc."></textarea>
+
+        <div class="actions">
+          <button type="button" class="btn ghost" id="btnQuote">Calculează transport</button>
+          <span class="badge">Transport: <span id="shipQuote" class="chip">—</span></span>
+        </div>
+
+        <h2>Metodă de plată</h2>
+        <div class="paymethods">
+          <label><input type="radio" name="pay" value="netopia" checked> Card online (NETOPIA)</label>
+          <label><input type="radio" name="pay" value="cod"> Ramburs (plată la livrare)</label>
+          <label><input type="radio" name="pay" value="transfer"> Transfer bancar (OP)</label>
+        </div>
+        <p class="muted">Ramburs/Transfer: comanda este procesată după confirmare. Pentru card, plata se confirmă instant prin NETOPIA.</p>
+
+        <button type="button" class="btn" id="btnPay">Finalizează comanda</button>
+      </form>
+    </section>
+
+    <aside class="card">
+      <h2>Coș</h2>
+      <table>
+        <thead><tr><th>Produs</th><th>Cant.</th><th>Preț</th><th>Total</th><th></th></tr></thead>
+        <tbody data-order-items></tbody>
+        <tfoot>
+          <tr><td colspan="3" style="text-align:right"><strong>Total produse</strong></td><td style="text-align:right" data-cart-total>0.00 RON</td><td></td></tr>
+          <tr><td colspan="3" style="text-align:right">Transport</td><td style="text-align:right" id="shipTotal" data-val="0">—</td><td></td></tr>
+          <tr><td colspan="3" style="text-align:right"><strong>Total de plată</strong></td><td style="text-align:right" id="grandTotal">—</td><td></td></tr>
+        </tfoot>
+      </table>
+    </aside>
+  </div>
+
+  <!-- Fallback Cart interfaces -->
+  <script>
+    window.Cart = window.Cart || { add(){}, remove(){}, setQty(){}, clear(){}, items(){ return []; }, total(){ return 0; } };
+    window.CartUI = window.CartUI || { mount(sel){ const root=document.querySelector(sel); if(root) root.innerHTML='<tr><td colspan="5">Coșul este gol.</td></tr>'; } };
+  </script>
+  <script src="assets/js/cart.js"></script>
+  <script>
+    function money(n){ return (Math.round(n*100)/100).toFixed(2); }
+    try { window.CartUI.mount('[data-order-items]'); } catch(e){ console.warn(e); }
+
+    function recomputeTotals(){
+      const goods = window.Cart.total();
+      const ship  = parseFloat(document.getElementById('shipTotal').dataset.val||'0');
+      const grand = goods + ship;
+      document.querySelector('[data-cart-total]').textContent = money(goods) + ' RON';
+      document.getElementById('grandTotal').textContent = grand ? money(grand)+' RON' : '—';
+    }
+    recomputeTotals();
+
+    // Quote shipping via FAN
+    document.getElementById('btnQuote').addEventListener('click', async () => {
+      const form = Object.fromEntries(new FormData(document.getElementById('checkoutForm')).entries());
+      const payload = {
+        courier: 'fan',
+        city: form.city,
+        county: form.county,
+        weight: window.Cart.items().reduce((s,i)=> s + i.qty, 0) || 1,
+      };
+      try{
+        const res = await fetch('/api/shipping/quote', {
+          method:'POST', headers:{'Content-Type':'application/json'},
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        const cost = data.cost || 0;
+        document.getElementById('shipQuote').textContent = cost ? (money(cost)+' RON') : '—';
+        const shipEl = document.getElementById('shipTotal');
+        shipEl.textContent = cost ? (money(cost)+' RON') : '—';
+        shipEl.dataset.val = cost;
+        recomputeTotals();
+      }catch(err){
+        alert('Nu am putut calcula transportul.');
+      }
+    });
+
+    // Pay flow based on selected method
+    document.getElementById('btnPay').addEventListener('click', async (e)=>{
+      e.preventDefault();
+      const formEl = document.getElementById('checkoutForm');
+      const form = Object.fromEntries(new FormData(formEl).entries());
+      const order = {
+        customer: form, items: window.Cart.items(), total: window.Cart.total(),
+        shipping: parseFloat(document.getElementById('shipTotal').dataset.val||'0')
+      };
+
+      const method = form.pay;
+      let endpoint = '/api/pay/netopia';
+      if(method === 'cod') endpoint = '/api/pay/cod';
+      if(method === 'transfer') endpoint = '/api/pay/transfer';
+
+      try{
+        const res = await fetch(endpoint, {
+          method:'POST', headers:{'Content-Type':'application/json'},
+          body: JSON.stringify(order)
+        });
+        const data = await res.json();
+        if(data.redirect){
+          window.location = data.redirect;
+        }else{
+          alert('Răspuns necunoscut de la server.');
+        }
+      }catch(err){
+        console.error(err);
+        alert('Comanda nu a putut fi procesată.');
+      }
+    });
+  </script>
+</body>
+</html>
