@@ -12,15 +12,6 @@
   <link rel="stylesheet" href="assets/css/gallery.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
   <link rel="stylesheet" href="assets/css/main.css" />
-  <script>
-    // Theme: persist + apply from localStorage, default to system
-    (()=>{
-      const saved = localStorage.getItem('theme');
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const theme = saved || (prefersDark ? 'dark' : 'light');
-      if(theme==='light') document.documentElement.setAttribute('data-theme','light');
-    })();
-  </script>
 </head>
 <body>
   <!-- ===== Header ===== -->
@@ -37,7 +28,7 @@
 
       <div class="nav-list" id="primaryNav">
         <a href="#promotii" data-scroll>Promoții</a>
-        <a href="shop.html" data-scroll><i class="fa-solid fa-star" style="color: gold;"></i>   Magazin</a>
+        <a href="shop.html" data-scroll>Magazin</a>
         <a href="#servicii" data-scroll>Servicii</a>
         <a href="#galerie"  data-scroll>Galerie</a>
         <a href="#echipa"   data-scroll>Echipa</a>
@@ -45,14 +36,11 @@
       </div>
 
       <div class="nav-cta">
-        <a class="btn ghost magnetic-green" href="https://wa.me/+40790323945" target="_blank" rel="noopener">
+        <a class="btn ghost magnetic-green hide-mobile" href="https://wa.me/+40790323945" target="_blank" rel="noopener">
           <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp
         </a>
-        <a class="btn magnetic-green" href="tel:+40790323945">
+        <a class="btn magnetic-green hide-mobile" href="tel:+40790323945">
           <i class="fa-solid fa-phone" aria-hidden="true"></i> Sună
-        </a>
-        <a class="btn magnetic-blue" href="checkout.html">
-          🛒<span class="chip" data-cart-count hidden>0</span>
         </a>
       </div>
     </nav>
@@ -61,28 +49,36 @@
   <!-- ===== Hero ===== -->
   <section class="hero fx-reveal" id="home">
     <div class="container wrap">
-      <div>
+      <div class="hero-content">
         <div class="eyebrow"><span class="chip">Showroom Galați</span><i>•</i><span>Str. 1 Decembrie 1918, nr. 13</span></div>
-        <h1>Finisaje premium pentru case care rămân în memorie</h1>
+        <h1 class="gradient-heading">Afa Art Design — Arta de a construi amintiri.</h1>
         <p class="lead">Vopsea decorativă, plăci ceramice, parchet, plinte, cornișe, riflaje.</p>
         <div class="hero-cta">
-          <a class="btn" href="https://maps.app.goo.gl/48Nuk6GfGFjcPnEeA" target="_blank" rel="noopener">Obține indicații</a>
-          <a class="btn ghost magnetic-green" href="#promotii" data-scroll>Vezi promoțiile</a>
+          <a class="btn ghost magnetic-blue" href="https://maps.app.goo.gl/48Nuk6GfGFjcPnEeA" target="_blank" rel="noopener">
+            <i class="fa-solid fa-location-dot"></i>
+            Obține indicații
+          </a>
+          <a class="btn ghost magnetic-green" href="#promotii" data-scroll>
+            <i class="fa-solid fa-tags"></i>
+            Vezi promoțiile
+          </a>
         </div>
 
         <div class="badge-row" aria-hidden="true">
-          <span class="chip">Pietra Spaccata</span>
+          <span class="chip">Piatră Spartă</span>
           <span class="chip">Piatră Zen</span>
           <span class="chip">Davinci</span>
-          <span class="chip">Produse premium</span>
+          <span class="chip">Stucco Venețian</span>
         </div>
       </div>
-      <article class="grid product" data-product data-id="calota-gold-60x120" data-name="Calota Gold • 60×120" data-price="69" data-thumb="assets/img/promo-calotagold.jpg">
-        <img class="thumb" src="assets/img/promo-calotagold.jpg" alt="Calota Gold 60×120" loading="lazy" />
-        <div class="meta">
-          <strong>Calota Gold • 60×120</strong><br><span class="price">69 RON/mp</span>
+      <!-- HERO PRODUCT SPOT (slideshow cu fade + dots) -->
+      <article id="promoSpot" class="grid product magnetic-card" data-product aria-roledescription="slideshow" aria-label="Promoțiile lunii">
+        <div class="spot-frame">
+          <span class="spot-price-chip magnetic-magenta"></span>
+          <img class="spot-img a" src="assets/img/promo-calotagold.jpg" alt="Calota Gold 60×120" loading="lazy">
+          <img class="spot-img b" alt="" aria-hidden="true" loading="lazy">
         </div>
-        <button class="btn" data-add-to-cart aria-label="Adaugă Calota Gold în coș">Adaugă în coș</button>
+        <div class="spot-dots" role="tablist" aria-label="Navigare produse"></div>
       </article>
 
     </div>
@@ -118,39 +114,100 @@
     </div>
   </section>
 
+  <!-- ===== Ambience ===== -->
+  <section id="ambience" class="ambience" aria-labelledby="ambience-title">
+    <div class="ambience-bg hero-content">
+      <div class="ambience-mover">
+        <div class="ambience-slide a"></div>
+        <div class="ambience-slide b"></div>
+      </div>
+    </div>
+
+    <div class="ambience-overlay">
+      <div class="container">
+        <h2 id="ambience-title" class="gradient-heading">Amenajări interioare premium.</h2>
+        <p class="lead">Plăci selectate cu grijă, texturi profunde și finisaje care rezistă în timp. Eleganță modernă pentru spații memorabile.</p>
+        <div class="badge-row" aria-hidden="true">
+          <span class="chip">Colecții premium</span>
+          <span class="chip">Rezistență & durabilitate</span>
+          <span class="chip">Design contemporan</span>
+        </div>
+        <div class="hero-cta">
+          <a class="btn ghost magnetic-blue" href="shop.html" data-scroll>
+            <i class="fa-solid fa-store"></i> Magazin Online
+          </a>
+          <a class="btn ghost magnetic-green" href="#contact" data-scroll>
+            <i class="fa-solid fa-envelope"></i> Contactează-ne
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <a href="#promotii" class="scroll-down" aria-label="Vezi promoțiile">
+      <i class="fas fa-chevron-down"></i>
+    </a>
+
+  </section>
+
   <!-- ===== Promoții / Produse ===== -->
   <section class="section fx-reveal" id="promotii" aria-labelledby="promotii-title">
     <div class="container">
       <h2 id="promotii-title">Promoțiile lunii</h2>
       <p class="muted">Selecție premium, prețuri imbatabile. Stocuri limitate în showroom.</p>
       <div class="grid product-grid">
+
+        <!-- Calota Gold -->
         <article class="product magnetic-card">
           <img class="thumb" src="assets/img/promo-calotagold.jpg" alt="Calota Gold 60×120" loading="lazy" />
           <div class="meta"><strong>Calota Gold • 60×120</strong><span class="price">69 RON/mp</span></div>
         </article>
+
+        <!-- Emi White -->
         <article class="product magnetic-card">
           <img class="thumb" src="assets/img/promo-emiwhite.jpg" alt="Emi White 60×120" loading="lazy" />
           <div class="meta"><strong>Emi White • 60×120</strong><span class="price">75 RON/mp</span></div>
         </article>
+
+        <!-- Plazzo -->
         <article class="product magnetic-card">
           <img class="thumb" src="assets/img/promo-plazzo.jpeg" alt="Plazzo 60×120" loading="lazy" />
           <div class="meta"><strong>Plazzo • 60×120</strong><span class="price">75 RON/mp</span></div>
         </article>
+
+        <!-- Naxo Aqua -->
+        <article class="product magnetic-card">
+          <img class="thumb" src="assets/img/promo-naxo.jpeg" alt="Naxo Aqua 60×120" loading="lazy" />
+          <div class="meta"><strong>Naxo Aqua • 60×120</strong><span class="price">75 RON/mp</span></div>
+        </article>
+
+        <!-- Moro Black -->
         <article class="product magnetic-card">
           <img class="thumb" src="assets/img/promo-moroblack.jpg" alt="Moro Black 60×120" loading="lazy" />
           <div class="meta"><strong>Moro Black • 60×120</strong><span class="price">75 RON/mp</span></div>
         </article>
+
+        <!-- Platinum Black -->
         <article class="product magnetic-card">
-          <img class="thumb" src="assets/img/promo-aspiregold.jpg" alt="Aspire Gold 60×120" loading="lazy" />
-          <div class="meta"><strong>Aspire Gold • 60×120</strong><span class="price">79,99 RON/mp</span></div>
+          <img class="thumb" src="assets/img/promo-platinumblack.jpg" alt="Platinum Black 60×120" loading="lazy" />
+          <div class="meta"><strong>Platinum Black • 60×120</strong><span class="price">75 RON/mp</span></div>
         </article>
+
+        <!-- Brazil 1 -->
         <article class="product magnetic-card">
           <img class="thumb" src="assets/img/promo-brazil.jpeg" alt="Brazil 1 60.5×121" loading="lazy" />
           <div class="meta"><strong>Brazil 1 • 60.5×121</strong><span class="price">79,99 RON/mp</span></div>
         </article>
+
+        <!-- Aspire Gold -->
+        <article class="product magnetic-card">
+          <img class="thumb" src="assets/img/promo-aspiregold.jpg" alt="Aspire Gold 60×120" loading="lazy" />
+          <div class="meta"><strong>Aspire Gold • 60×120</strong><span class="price">79,99 RON/mp</span></div>
+        </article>
+
       </div>
     </div>
   </section>
+
 
   <!-- ===== Servicii ===== -->
   <section class="section fx-reveal" id="servicii">
@@ -158,23 +215,23 @@
       <div class="grid cards">
         <article class="card magnetic-card span-6">
           <div class="icon">🎨</div>
-          <div class="title">Vopsea & Tencuială Decorativă</div>
-          <p class="muted">Aplicatori autorizați Ferrara Design. Mostră personalizată, consultanță în showroom și montaj rapid.</p>
+          <div class="title">Vopsea Decorativă</div>
+          <p class="muted">Aplicatori profesioniști. Mostră personalizată, consultanță în showroom și calitate garantată.</p>
         </article>
         <article class="card magnetic-card span-6">
           <div class="icon">🪵</div>
           <div class="title">Parchet & Elemente Decorative</div>
-          <p class="muted">SPC, herringbone, plinte, riflaje și profile. Montaj curat, garantat.</p>
+          <p class="muted">SPC, herringbone, plinte, riflaje și profile. Montaj curat, inclus în preț.</p>
         </article>
         <article class="card magnetic-card span-6">
           <div class="icon">🧱</div>
-          <div class="title">Plăci Ceramice & Montaj</div>
-          <p class="muted">Selecție premium, linii contemporane. Plănuire rosturi, adezivi potriviți, execuție fără surprize.</p>
+          <div class="title">Plăci Ceramice</div>
+          <p class="muted">Selecție premium, linii contemporane. Plănuire rosturi, adezivi potriviți, execuție curată.</p>
         </article>
         <article class="card magnetic-card span-6">
           <div class="icon">🧭</div>
           <div class="title">Consultanță & Măsurători</div>
-          <p class="muted">Venim cu idei, mostre și calcule de necesar. Oferim deviz clar, fără costuri ascunse.</p>
+          <p class="muted">Venim cu idei, mostre și ne ocupăm de toate caculele necesare. Deviz clar, fără costuri ascunse.</p>
         </article>
       </div>
     </div>
@@ -238,6 +295,39 @@
     </div>
   </section>
 
+  <!-- ===== Extra ===== -->
+  <section class="section fx-reveal" id="servicii-extra">
+    <div class="container">
+      <div class="grid cards">
+        
+        <article class="card magnetic-card span-6">
+          <div class="icon"><i class="fas fa-truck"></i></div>
+          <div class="title">Livrare în toată țara</div>
+          <p class="muted">Toate produsele noastre pot fi livrate oriunde în țară prin curier sau mașini proprii.</p>
+        </article>
+
+        <article class="card magnetic-card span-6">
+          <div class="icon"><i class="fas fa-undo-alt"></i></div>
+          <div class="title">Retur produse</div>
+          <p class="muted">Produsele noastre pot fi returnate în maxim 30 de zile de la achiziție.</p>
+        </article>
+
+        <article class="card magnetic-card span-6">
+          <div class="icon"><i class="fas fa-lock"></i></div>
+          <div class="title">Plăți securizate</div>
+          <p class="muted">Toate plățile cu cardul sunt securizate, evitând orice tip de fraudă bancară.</p>
+        </article>
+
+        <article class="card magnetic-card span-6">
+          <div class="icon"><i class="fas fa-headset"></i></div>
+          <div class="title">Asistență</div>
+          <p class="muted">Oferim asistență gratuită pentru alegerea produselor potrivite nevoilor tale.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
   <!-- ===== Contact ===== -->
   <section class="section fx-reveal" id="contact">
     <div class="container">
@@ -285,7 +375,7 @@
           </ul>
 
           <div class="hero-cta">
-            <a class="btn magnetic-green" href="https://wa.me/+40790323945" target="_blank" rel="noopener">
+            <a class="btn ghost magnetic-green" href="https://wa.me/+40790323945" target="_blank" rel="noopener">
               <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
               Scrie-ne pe WhatsApp
             </a>
@@ -369,32 +459,54 @@
     </div>
   </div>
 
-  <footer>
+  <footer class="site-footer">
     <div class="container">
-      <div class="row" style="align-items:center;justify-content:space-between">
-        <small>© <span id="y"></span> AFA ART DESIGN, Toate drepturile rezervate.</small>
-        <div class="row" style="gap:16px">
-          <a href="/politica-confidentialitate.html">
-            <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
-            Politica de confidențialitate
-          </a>
-          <a href="/politica-cookie.html">
-            <i class="fa-solid fa-cookie-bite" aria-hidden="true"></i>
-            Politica cookie
-          </a>
-          <a href="/termeni-si-conditii.html">
-            <i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>
-            Termeni & condiții
-          </a>
+      <div class="footer-grid">
+        
+        <!-- Link-uri utile -->
+        <section class="fcol">
+          <h4 class="ftitle">Link-uri utile</h4>
+          <ul class="flist">
+            <li><a href="/index.html"><i class="fa-solid fa-house"></i> Acasă</a></li>
+            <li><a href="/shop.html"><i class="fa-solid fa-store"></i> Magazine</a></li>
+            <li><a href="/#contact"><i class="fa-solid fa-envelope-open-text"></i> Contact</a></li>
+          </ul>
+        </section>
+
+        <!-- Politici -->
+        <section class="fcol">
+          <h4 class="ftitle">Politicile noastre</h4>
+          <ul class="flist">
+            <li><a href="/termeni-si-conditii.html"><i class="fa-solid fa-scale-balanced"></i> Termeni & condiții</a></li>
+            <li><a href="/politica-confidentialitate.html"><i class="fa-solid fa-shield-halved"></i> Politica de confidențialitate</a></li>
+            <li><a href="/politica-returnare.html"><i class="fa-solid fa-rotate-left"></i> Politica de returnare</a></li>
+            <li><a href="/politica-cookie.html"><i class="fa-solid fa-cookie-bite"></i> Politica cookie</a></li>
+          </ul>
+        </section>
+
+        <!-- Newsletter -->
+        <section class="fcol">
+          <h4 class="ftitle">Newsletter</h4>
+          <p class="muted">Abonează-te ca să primești cele mai noi oferte Afa Art Design.</p>
+          <form class="newsletter" action="#" method="post" onsubmit="event.preventDefault(); /* TODO: integrează cu backend/email service */">
+            <label class="sr-only" for="nl-email">Email</label>
+            <input id="nl-email" type="email" name="email" placeholder="Email-ul tău" required>
+            <button class="btn ghost magnetic-green" type="submit">Abonare</button>
+          </form>
+        </section>
+
+      </div>
+
+      <div class="footer-bottom">
+        <small>© <span id="y"></span> Afa Art Design — Toate drepturile rezervate.</small>
+        <div class="mini-links">
+          <a href="/politica-confidentialitate.html">Confidențialitate</a>
+          <a href="/politica-cookie.html">Cookies</a>
+          <a href="/termeni-si-conditii.html">Termeni</a>
         </div>
       </div>
     </div>
   </footer>
-
-  <!-- Scroll to Top Button -->
-  <button id="scrollTopBtn" aria-label="Înapoi sus">
-    <i class="fa-solid fa-arrow-up"></i>
-  </button>
 
   <!-- Fancy Floating Contact Button (deschide același modal) -->
   <button id="fabContact" class="fab-contact" aria-label="Contact rapid">
@@ -675,13 +787,185 @@
     });
   </script>
 
+  <script>
+  // Promo spot hero
+  (function(){
+    const spot = document.getElementById('promoSpot');
+    const grid = document.querySelector('#promotii .product-grid');
+    if (!spot || !grid) return;
+
+    const slides = Array.from(grid.querySelectorAll('.product')).map(card => {
+      const img   = card.querySelector('img.thumb');
+      const price = card.querySelector('.price')?.textContent?.trim() || '';
+      const name  = card.querySelector('.meta strong')?.textContent?.trim() || '';
+      return { src: img?.src || '', alt: img?.alt || name, price };
+    }).filter(s => s.src);
+
+    if (!slides.length) return;
+
+    const imgA      = spot.querySelector('.spot-img.a');
+    const imgB      = spot.querySelector('.spot-img.b');
+    const priceChip = spot.querySelector('.spot-price-chip');
+    const dotsWrap  = spot.querySelector('.spot-dots');
+
+    const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const DURATION = 4500;
+    let idx = 0, timer = null, showingA = true;
+
+    const dots = slides.map((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'spot-dot';
+      dot.type = 'button';
+      dot.setAttribute('role', 'tab');
+      dot.setAttribute('aria-label', 'Slide ' + (i+1));
+      dot.addEventListener('click', () => { goTo(i, true); });
+      dotsWrap.appendChild(dot);
+      return dot;
+    });
+
+    function setActiveDot(i){
+      dots.forEach((d, k) => d.setAttribute('aria-selected', k === i ? 'true' : 'false'));
+    }
+
+    function render(i){
+      const s = slides[i];
+      if (!s) return;
+
+      const front = showingA ? imgB : imgA;
+      const back  = showingA ? imgA : imgB;
+
+      const pre = new Image();
+      pre.onload = () => {
+        front.src = s.src;
+        front.alt = s.alt || '';
+        if (priceChip) priceChip.textContent = s.price || '';
+
+        front.classList.remove('show');
+        back.classList.add('show');
+
+        requestAnimationFrame(() => {
+          back.classList.remove('show');
+          front.classList.add('show');
+          showingA = !showingA;
+        });
+      };
+      pre.onerror = pre.onload;
+      pre.src = s.src;
+
+      setActiveDot(i);
+    }
+
+    function next(){ idx = (idx + 1) % slides.length; render(idx); }
+    function goTo(i, restart){
+      idx = i % slides.length;
+      render(idx);
+      if (restart) play();
+    }
+
+    function play(){
+      stop();
+      if (!reduceMotion) timer = setInterval(next, DURATION);
+    }
+    function stop(){
+      if (timer) { clearInterval(timer); timer = null; }
+    }
+
+    imgA.classList.add('show');
+    imgA.src = slides[0].src;
+    imgA.alt = slides[0].alt || '';
+    if (priceChip) priceChip.textContent = slides[0].price || '';
+    setActiveDot(0);
+
+    play();
+
+    spot.addEventListener('mouseenter', stop);
+    spot.addEventListener('mouseleave', play);
+    spot.addEventListener('focusin', stop);
+    spot.addEventListener('focusout', play);
+  })();
+  </script>
+
+  <script>
+  // Ambience section
+  (function(){
+    const root = document.getElementById('ambience');
+    if(!root) return;
+
+    const imgs = [
+      "assets/img/dunca/plazzo.png",
+      "assets/img/dunca/sky onyx.png",
+      "assets/img/dunca/statuario len grey.png",
+      "assets/img/dunca/angelo oro.png",
+      "assets/img/dunca/aspire gold.png",
+      "assets/img/dunca/calota gold.png",
+      "assets/img/dunca/capitol.png",
+      "assets/img/dunca/CARRARA SKY.png",
+      "assets/img/dunca/cr arrezo white.png",
+      "assets/img/dunca/cr gold flaks.png",
+      "assets/img/dunca/cr smoge aqua.png",
+      "assets/img/dunca/destiny.png",
+      "assets/img/dunca/deston gold.png",
+      "assets/img/dunca/emi white.png",
+      "assets/img/dunca/florina bianco.png",
+      "assets/img/dunca/gold river.png",
+      "assets/img/dunca/golden filip.png",
+      "assets/img/dunca/mirror black.png",
+      "assets/img/dunca/moro black.png",
+      "assets/img/dunca/new aqua.png",
+      "assets/img/dunca/nuvola.png"
+    ];
+
+    const a = root.querySelector('.ambience-slide.a');
+    const b = root.querySelector('.ambience-slide.b');
+    if(!a || !b || !imgs.length) return;
+
+    // helper
+    const setBg = (el, url) => { el.style.backgroundImage = `url("${encodeURI(url)}")`; };
+
+    // preload simplu
+    const preload = new Set();
+    const preLoadSrc = (src) => {
+      if(preload.has(src)) return;
+      const im = new Image(); im.src = src; preload.add(src);
+    };
+
+    let i = 0, showingA = true;
+    const DURATION = 8000; // ms per slide
+
+    // init
+    setBg(a, imgs[0]); a.classList.add('active');
+    setBg(b, imgs[1 % imgs.length]); b.classList.remove('active');
+    imgs.slice(0, 4).forEach(preLoadSrc);
+
+    function next(){
+      i = (i + 1) % imgs.length;
+      const incoming = showingA ? b : a;
+      const outgoing = showingA ? a : b;
+
+      // pregătim imaginea următoare pe layerul invizibil
+      setBg(incoming, imgs[i]);
+      incoming.classList.add('active');   // fade in
+      outgoing.classList.remove('active'); // fade out
+      showingA = !showingA;
+
+      // preload următoarea
+      preLoadSrc(imgs[(i + 1) % imgs.length]);
+    }
+
+    // rulează
+    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let timer = null;
+    if(!reduceMotion){
+      timer = setInterval(next, DURATION);
+    }
+  })();
+  </script>
+
   <!-- === MODULES === -->
   <script type="module" src="assets/js/gallery.js"></script>
   <script type="module" src="assets/js/gallery-toggle.js"></script>
-
   <script type="module" src="assets/js/modal-control.js"></script>
   <script src="assets/js/cart.js"></script>
-
 
 </body>
 </html>

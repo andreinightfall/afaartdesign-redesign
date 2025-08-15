@@ -23,8 +23,118 @@
     @media (max-width: 900px){ .shop-card{ grid-column: span 12; } }
     /* badge coș în header */
     [data-cart-count]{ margin-left:.25rem; }
+    /* împinge butonul jos în card */
+    .shop-card { height: 100%; }                 /* carduri egale pe rând */
+    .shop-grid { align-items: stretch; }         /* întinde toate cardurile pe înălțime */
+    .shop-card [data-add-to-cart]{
+      margin-top: auto;                          /* magie: împinge butonul la bază */
+      width: 100%;
+    }
+    /* (opțional) spacing mai clar între meta și buton */
+    .shop-card .meta { margin-bottom: 8px; }
+    .shop-card .thumb{
+      aspect-ratio: 4 / 3;       /* sau 1/1 dacă preferi pătrate */
+      object-fit: cover;          /* umple frumos cadrul */
+    }
+  </style>
+  <style>
+    /* ===== Mini Cart (dropdown) ===== */
+    .cart { position: relative; }
+    .cart-btn{
+      position: relative;
+      display: inline-flex; align-items: center; justify-content: center;
+      gap:.5rem; padding:.5rem .7rem;
+      border:1px solid var(--line); border-radius:12px;
+      background: color-mix(in oklab, var(--bg-2, #fff), white 40%);
+      box-shadow: var(--shadow-1);
+    }
+    .cart-btn i{ font-size: 1.05rem; }
+    .cart-count{
+      position:absolute; top:-6px; right:-6px;
+      min-width:18px; height:18px; display:grid; place-items:center;
+      background: var(--primary); color:#fff; font-weight:800; font-size:.7rem;
+      border-radius:999px; padding:0 5px; border:2px solid var(--bg-2, #fff);
+    }
+
+    /* Dropdown panel */
+    .cart-dropdown{
+      position: absolute; right: 0; top: calc(100% + 8px);
+      width: min(360px, 92vw);
+      background: var(--panel);
+      border:1px solid var(--line);
+      border-radius: 14px;
+      box-shadow: var(--shadow-2);
+      padding: 10px;
+      display: none; z-index: 100;
+    }
+    .cart.open .cart-dropdown{ display: block; }
+    @media (any-hover: hover){
+      .cart:hover .cart-dropdown{ display:block; }
+    }
+
+    /* Listă produse */
+    .cart-items{ max-height: 330px; overflow:auto; display:flex; flex-direction:column; gap:8px; }
+    .cart-item{
+      display:grid; grid-template-columns: 64px 1fr auto; gap:10px; align-items:center;
+      padding:8px; border:1px solid var(--line); border-radius:12px; background: var(--panel-2);
+    }
+    .cart-item .thumb{ width:64px; height:64px; object-fit:cover; border-radius:8px; }
+    .cart-item .name{ font-weight:800; font-size:.95rem; }
+    .cart-item .price{ font-weight:800; color: var(--ink); opacity:.9; font-size:.9rem; }
+    .cart-item .controls{ display:flex; align-items:center; gap:6px; }
+    .cart-item .qty{
+      display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px;
+      border:1px solid var(--line); border-radius:10px; background: var(--bg-2);
+    }
+    .cart-item .btn-qty, .cart-item .btn-del{
+      width:34px; height:34px; display:grid; place-items:center;
+      border:1px solid var(--line); border-radius:10px; background: var(--bg-2); cursor:pointer;
+    }
+    .cart-item .btn-del{ color: var(--danger); }
+
+    /* Footer total + CTA */
+    .cart-footer{
+      display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:10px;
+      border-top:1px solid var(--line); padding-top:10px;
+    }
+    .cart-footer .totals{ display:flex; align-items:center; gap:6px; }
+    .cart-footer .totals strong{ font-size:1rem; }
+
+    .cart-empty{ text-align:center; padding:16px 6px; }
+
+    /* Touch-friendly pe mobil: dropdown full-width sub nav */
+    @media (max-width: 900px){
+      .cart-dropdown{
+        position: fixed; left: 10px; right: 10px; top: calc(var(--navH,64px) + 10px);
+        width: auto;
+      }
+    }
+  </style>
+  <style>
+    /* Header normal */
+    header{
+      position: relative;      /* nu sticky */
+      z-index: 1000;
+      transition: background-color .2s ease, box-shadow .2s ease, padding .2s ease;
+    }
+
+    /* Când e fixat */
+    header.is-pinned{
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      width: 100%;
+      background: var(--navBg, rgba(12,14,18,.92));
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      box-shadow: 0 8px 24px rgba(0,0,0,.18);
+    }
+
+    /* Spațiul care previne „saltul” layout-ului */
+    .header-placeholder{ height: var(--headerH, 0px); }
   </style>
 </head>
+
 <body>
   <header>
     <nav class="container nav">
@@ -42,9 +152,26 @@
         <a class="btn magnetic-green" href="tel:+40790323945">
           <i class="fa-solid fa-phone" aria-hidden="true"></i> Sună
         </a>
-        <a class="btn magnetic-blue" href="checkout.html">
-          🛒<span class="chip" data-cart-count hidden>0</span>
-        </a>
+        <!-- Mini Cart -->
+        <div id="miniCart" class="cart">
+          <a class="btn magnetic-blue cart-btn" href="checkout.html">
+            🛒<span class="chip" data-cart-count>0</span>
+          </a>
+
+          <div class="cart-dropdown">
+            <div class="cart-items" data-cart-items></div>
+            <div class="cart-empty" data-cart-empty hidden>
+              <p class="muted">Coșul tău este gol.</p>
+            </div>
+            <div class="cart-footer">
+              <div class="totals">
+                <span>Total</span>
+                <strong data-cart-total>0,00 RON</strong>
+              </div>
+              <a href="checkout.html" class="btn ghost magnetic-green">Vezi coșul</a>
+            </div>
+          </div>
+        </div>
       </div>
     </nav>
   </header>
@@ -85,11 +212,37 @@
 
   <footer>
     <div class="container">
-      <small class="muted">© Afa Art Design • Livrare prin FAN Courier • Plăți securizate prin NETOPIA</small>
+      <small class="muted">© Afa Art Design 2025, toate drepturile rezervate. • Livrare prin FAN Courier • Plăți securizate prin NETOPIA</small>
     </div>
   </footer>
 
   <script src="assets/js/cart.js"></script>
   <script src="assets/js/shop.js" type="module"></script>
+  <script>
+  (()=> {
+    const header = document.querySelector('header');
+    if (!header) return;
+
+    // Inserăm un placeholder chiar înainte de header
+    const ph = document.createElement('div');
+    ph.className = 'header-placeholder';
+    header.parentNode.insertBefore(ph, header);
+
+    function pin(on){
+      header.classList.toggle('is-pinned', on);
+      // când e fixat, placeholderul preia înălțimea ca să nu sară conținutul
+      ph.style.setProperty('--headerH', on ? header.offsetHeight + 'px' : '0px');
+    }
+
+    // Setări inițiale + handlers
+    function onScroll(){ pin(window.scrollY > 0); }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', ()=> { if (header.classList.contains('is-pinned')) pin(true); });
+
+    // init
+    onScroll();
+  })();
+  </script>
+
 </body>
 </html>
