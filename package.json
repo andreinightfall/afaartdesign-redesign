@@ -26,6 +26,7 @@
     "magnific-popup": "^1.2.0",
     "netopia-card": "^2.1.2",
     "node-fetch": "^3.3.2",
+    "postcss-safe-parser": "^7.0.1",
     "sharp": "^0.34.3"
   },
   "devDependencies": {

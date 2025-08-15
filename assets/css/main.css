@@ -90,12 +90,15 @@ header {
 }
 
 .nav {
-  padding: 1.4rem 2rem; /* mai mult spațiu sus/jos + lateral */
+  display: flex; /* important pt. poziționare pe mobil */
+  align-items: center;
+  justify-content: space-between; /* împinge brand-ul la stânga și meniul la dreapta */
+  padding: 1.4rem 2rem;
 }
 
 @media (max-width: 900px) {
   .nav {
-    padding: 1.2rem 1.5rem; /* ușor redus pe mobil */
+    padding: 0.6rem 1rem; /* mai mic pe mobil */
   }
 }
 
@@ -107,7 +110,17 @@ header {
   text-decoration: none;
 }
 
-/* nav links + micro animations */
+.brand img {
+  height: 36px; /* micșorat pe mobil */
+}
+
+@media (max-width: 900px) {
+  .brand img {
+    height: 30px;
+  }
+}
+
+/* nav links */
 .nav-list {
   display: flex;
   gap: 1rem;
@@ -119,7 +132,6 @@ header {
   padding: 0.35rem 0.6rem;
   border-radius: 10px;
   transition: transform 0.15s ease, background-color 0.15s ease, opacity 0.15s ease;
-  will-change: transform;
 }
 
 .nav-list a:hover {
@@ -136,11 +148,15 @@ header {
   gap: 0.6rem;
 }
 
+/* buton meniu mobil */
 .mobile-toggle {
   background: none;
   border: none;
   color: var(--text);
-  font-size: 1.5rem;
+  font-size: 1.4rem;
+  line-height: 1;
+  padding: 0.25rem 0.4rem;
+  cursor: pointer;
 }
 
 @media (max-width: 900px) {
@@ -149,6 +165,7 @@ header {
   }
   .mobile-toggle {
     display: block;
+    margin-left: auto; /* se asigură că e în dreapta */
   }
 }
 
@@ -441,14 +458,6 @@ footer a:hover i{opacity:1}
   .btn,.nav-list a{transition:none}
 }
 
-/* ===== Header / Nav ===== */
-.brand img{
-  height: 72px;          /* bigger logo */
-}
-@media (max-width: 600px){
-  .brand img{ height: 48px; }  /* keep it tidy on small screens */
-}
-
 /* Offset pentru conținut, ca header-ul fix să nu îl acopere */
 body{
   transition: padding-top .25s ease;
@@ -457,11 +466,6 @@ body{
 /* Header FIXED (robust pe toate browserele) */
 header{
   transition: height .25s ease, background-color .2s ease, border-color .2s ease;
-}
-
-/* Containerul intern se întinde pe toată înălțimea header-ului */
-.nav{ /* controlăm ritmul doar cu height-ul header-ului */
-  transition: padding .25s ease;
 }
 
 /* Logo scalat din variabile */
@@ -485,16 +489,6 @@ header{
 /* opțional: micșorare foarte ușoară a textului în stare shrink */
 header.shrink .nav-cta .btn{
   font-size: .98rem;
-}
-
-/* ===== Mobile: diferențe mai mici pentru a păstra ergonomia ===== */
-@media (max-width: 600px){
-  :root{
-    --navH: 82px;
-    --navH-shrink: 62px;
-    --logoH: 60px;
-    --logoH-shrink: 48px;
-  }
 }
 
 /* Social links layout */
@@ -932,19 +926,6 @@ button,
    =============================== */
 @media (max-width: 600px){
 
-  /* Container & spacing */
-  .container{ width: min(100%, 100% - 1.25rem); }
-  .section{ padding: 44px 0; }
-  .section h2{ margin-bottom: 8px; }
-
-  /* Header / nav */
-  body{ padding-top: var(--navH); }
-  header{ backdrop-filter: blur(8px); }
-  .nav{ gap: .5rem; }
-  .brand img{ height: var(--logoH); }
-  .nav-cta{ gap: .4rem; }
-  .nav-cta .btn{ padding: .6rem .9rem; font-size: .95rem; }
-
   /* Hero */
   .hero{ padding: 72px 0 36px; }
   .hero .wrap{ display: grid; grid-template-columns: 1fr; gap: 22px; }
@@ -1038,9 +1019,6 @@ button,
   z-index: 40;
 }
 .nav .has-dropdown.is-open > .dropdown{ display: block; }
-
-/* Asigură-te că bară de navigație e deasupra hero-ului */
-header, .nav{ position: relative; z-index: 50; }
 
 
 /* ===============================
@@ -1159,38 +1137,12 @@ header, .nav{ position: relative; z-index: 50; }
   }
 }
 
-/* Asigură-te că niciun părinte nu rupe sticky (evită overflow pe body/html) */
-
-:root{
-  --navH: 64px;
-  --logoH: 32px;
-  --navBg: color-mix(in oklab, var(--bg, #0b0c0f), transparent 10%);
-}
-
-/* Sticky by default */
-header{
-  position: sticky;
-  top: 0;
-  z-index: 1000;                    /* peste aurora/hero */
-  background: var(--navBg);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(255,255,255,.06);
-}
-
 /* Bară internă */
 .nav{
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-}
-
-
-/* Fallback class (JS o activează doar dacă e nevoie) */
-header.is-fixed{
-  position: fixed;
-  left: 0; right: 0; top: 0;
 }
 
 /* Evită cauzele comune care „distrug” sticky (pe header) */
@@ -1387,15 +1339,6 @@ header {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* shadow subtil */
 }
 
-/* Bară internă */
-.nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 1.2rem 2rem; /* mai mult spațiu stânga/dreapta */
-}
-
 /* Desktop nav-list */
 .nav .nav-list {
   display: flex;
@@ -1446,11 +1389,6 @@ header {
 @media (max-width: 900px) {
   .mobile-toggle {
     display: inline-flex;
-  }
-
-  .nav {
-    position: relative;
-    padding: 1rem 1.2rem; /* mai mic pe mobil */
   }
 
   .nav .nav-list {
@@ -1751,3 +1689,92 @@ html {
 #miniCart.cart.open .cart-dropdown,
 #miniCart.cart.is-hover .cart-dropdown,
 #miniCart.cart:hover .cart-dropdown{ display:block; }
+
+/* ===== Header / Nav (curat) ===== */
+header{
+  z-index: 1000;
+  background: rgba(12,14,18,.6);
+  /* fără sticky aici; ai deja script de pin pe scroll */
+}
+
+.nav{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0.6rem 1rem;          /* compact pe toate, ajustăm pe desktop mai jos */
+}
+
+/* Brand / logo */
+.brand{
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  text-decoration: none;
+}
+.brand img{
+  height: 36px;                  /* dimensiune implicită */
+}
+
+/* Linkuri */
+.nav-list{
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.nav-list a{
+  opacity:.9;
+  padding:.35rem .6rem;
+  border-radius:10px;
+  transition:transform .15s, background-color .15s, opacity .15s;
+}
+.nav-list a:hover{ opacity:1; transform:scale(1.06); background:rgba(255,255,255,.06); }
+.nav-list a:active{ transform:scale(.98); }
+
+/* CTA din dreapta */
+.nav-cta{ display:flex; align-items:center; gap:10px; }
+
+/* Buton meniu mobil */
+.mobile-toggle{
+  display: none;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 10px;
+  color: var(--text);
+  font-size: 1.15rem;            /* mai mic */
+  line-height: 1;
+  padding: .3rem .5rem;
+}
+
+/* ===== Mobile (≤ 900px) ===== */
+@media (max-width: 900px){
+  .nav{ padding: 0.5rem 0.9rem; }     /* și mai compact */
+  .brand img{ height: 28px; }         /* logo mai mic pe mobil */
+  .nav-cta .btn{ padding: .5rem .7rem; font-size: .9rem; }
+  .nav-cta .hide-mobile{ display: none !important; }  /* ascunde butoanele mari dacă ai clasa */
+
+  .mobile-toggle{ display: inline-flex; margin-left: auto; } /* împins în dreapta */
+  .nav-list{ 
+    position: absolute; top: 100%; left: 0; right: 0;
+    background: var(--panel, #121317);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 12px;
+    box-shadow: 0 16px 40px rgba(0,0,0,.35);
+    z-index: 60;
+
+    display: flex; flex-direction: column; gap: 6px;
+    padding: 0 12px;
+    max-height: 0; overflow: hidden; opacity: 0; transform: translateY(-6px);
+    pointer-events: none;
+    transition: max-height .35s ease, opacity .30s ease, transform .30s ease, padding .20s ease;
+  }
+  .nav.open .nav-list{
+    padding: 10px 12px; max-height: 500px; opacity: 1; transform: translateY(0); pointer-events: auto;
+  }
+  .nav .nav-list a{ display:block; padding: 10px 8px; }
+}
+
+/* ===== Desktop (≥ 901px) ===== */
+@media (min-width: 901px){
+  .nav{ padding: 1rem 2rem; }    /* mai generos pe desktop */
+}
