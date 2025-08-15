@@ -1,9 +1,6 @@
 body {
-  margin: 0;
   background: linear-gradient(180deg, var(--bg), color-mix(in oklab, var(--bg), black 6%));
-  color: var(--text);
   font-family: 'Satoshi', system-ui, Segoe UI, Roboto, Arial, sans-serif;
-  line-height: 1.45;
   transition: background-color .3s ease, color .3s ease;
 }
 
@@ -87,17 +84,13 @@ a{color:var(--text);text-decoration:none}
 }
 
 /* ===== Header / Nav ===== */
-header{
-  position:sticky;top:0;z-index:50;
-  background:rgba(12,14,18,.6);
-  backdrop-filter:saturate(140%) blur(10px);
-  border-bottom:1px solid rgba(255,255,255,.06)
+header{z-index:50;
+  background:rgba(12,14,18,.6)
 }
-.nav{display:flex;align-items:center;justify-content:space-between;padding:.8rem 0}
+.nav{padding:.8rem 0}
 
 /* brand */
-.brand{display:flex;align-items:center;gap:.75rem;text-decoration:none}
-.brand img{height:48px}      /* bigger logo */     /* hide header text (logo already has text) */
+.brand{display:flex;align-items:center;gap:.75rem;text-decoration:none}      /* bigger logo */     /* hide header text (logo already has text) */
 
 /* nav links + micro animations */
 .nav-list{display:flex;gap:1rem;align-items:center}
@@ -111,8 +104,8 @@ header{
 .nav-list a:hover{opacity:1; transform:scale(1.06); background:rgba(255,255,255,.06)}
 .nav-list a:active{transform:scale(.98)}
 
-.nav-cta{display:flex;gap:.6rem;align-items:center}
-.mobile-toggle{display:none;background:none;border:none;color:var(--text);font-size:1.5rem}
+.nav-cta{gap:.6rem}
+.mobile-toggle{background:none;border:none;color:var(--text);font-size:1.5rem}
 @media (max-width: 900px){
   .nav-list{display:none}
   .mobile-toggle{display:block}
@@ -121,9 +114,8 @@ header{
 /* Social icons row under header */
 
 /* ===== Hero ===== */
-.hero{position:relative;padding:100px 0 60px;isolation:isolate}
+.hero{padding:100px 0 60px}
 .hero::before{
-  content:"";position:absolute;inset:0;z-index:-1;
   /* subtle dark overlay + showroom image */
   background:
     linear-gradient(180deg, rgba(0, 0, 0, 0.60), rgba(0,0,0,.60)),
@@ -270,8 +262,7 @@ h1{font-size:clamp(2.2rem, 4.2vw, 3.6rem);line-height:1.07;margin:.4rem 0 .8rem}
 /* ===== Testimonials ===== */
 .row{display:flex;gap:16px;flex-wrap:wrap}
 .testi{
-  flex:1 1 320px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;
-  background:var(--panel);border:1px solid rgba(255,255,255,.06);padding:16px;border-radius:12px
+  flex:1 1 320px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;border:1px solid rgba(255,255,255,.06);padding:16px;border-radius:12px
 }
 .avatar{width:56px;height:56px;border-radius:50%;object-fit:cover}
 
@@ -343,7 +334,7 @@ footer a:hover i{opacity:1}
 
 /* ===== Header / Nav ===== */
 .brand img{
-  height: 64px;          /* bigger logo */
+  height: 72px;          /* bigger logo */
 }
 @media (max-width: 600px){
   .brand img{ height: 48px; }  /* keep it tidy on small screens */
@@ -375,41 +366,25 @@ footer a:hover i{opacity:1}
 
 /* Offset pentru conținut, ca header-ul fix să nu îl acopere */
 body{
-  padding-top: var(--navH);
   transition: padding-top .25s ease;
 }
 
 /* Header FIXED (robust pe toate browserele) */
 header{
-  position: fixed; top: 0; left: 0; right: 0;
-  z-index: 1000;
-  height: var(--navH);
   transition: height .25s ease, background-color .2s ease, border-color .2s ease;
 }
 
 /* Containerul intern se întinde pe toată înălțimea header-ului */
-.nav{
-  height: 100%;
-  padding-block: 0; /* controlăm ritmul doar cu height-ul header-ului */
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.nav{ /* controlăm ritmul doar cu height-ul header-ului */
   transition: padding .25s ease;
 }
 
 /* Logo scalat din variabile */
 .brand img{
-  height: var(--logoH);
   transition: height .25s ease;
 }
 
 /* ===== Stare micșorată (aplică oricare din aceste hook-uri în JS) ===== */
-header.shrink{
-  height: var(--navH-shrink);
-}
-header.shrink .brand img{
-  height: var(--logoH-shrink);
-}
 
 /* ===== SPAȚIU VERTICAL CONSTANT pe butoanele din dreapta ===== */
 /* astfel nu se lipesc sus/jos nici când header-ul intră în shrink */
@@ -455,27 +430,8 @@ header.shrink .nav-cta .btn{
 /* --- Social card --- */
 
 /* --- Contact info card --- */
-.card--contact .contact-list{
-  list-style: none; padding: 0; margin: 0 0 14px; display: grid; gap: 10px;
-}
-.card--contact .contact-list li a{
-  display: grid; grid-template-columns: 22px 1fr; align-items: center; gap: 10px;
-  padding: 8px 0; border-bottom: 1px dashed rgba(255,255,255,.06);
-}
-.card--contact .contact-list li:last-child a{ border-bottom: 0; }
-.card--contact .contact-list i{ font-size: 1rem; text-align: center; }
 
 /* --- Map card --- */
-.card--map .map-embed{
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,.08);
-  box-shadow: var(--shadow);
-}
-.card--map .map-embed iframe{
-  display: block; width: 100%; height: auto;
-  aspect-ratio: 4 / 3; border: 0;
-}
 
 /* Tighter card padding for these three cards (optional) */
 
@@ -537,9 +493,6 @@ header.shrink .nav-cta .btn{
 }
 
 .modal-close {
-  position: absolute;
-  top: 8px;
-  right: 12px;
   background: none;
   border: none;
   font-size: 1.5rem;
@@ -576,10 +529,7 @@ header.shrink .nav-cta .btn{
   border-color: var(--brand);
 }
 
-/* Modal robustness */
-.modal[hidden] { display: none !important; }  /* ensure hidden always hides */
-.modal { z-index: 2000; }                     /* above fixed header (yours is 1000) */
-.modal-close { position: absolute; top: 8px; right: 12px; z-index: 1; }
+/* Modal robustness */  /* ensure hidden always hides */                     /* above fixed header (yours is 1000) */
 
 /* Scroll to Top Button */
 #scrollTopBtn {
@@ -621,12 +571,10 @@ body{ padding-top: var(--navH); transition: padding-top .2s ease; }
 
 /* Header fix (nu dispare), JS schimbă padding-top la body la scroll */
 header{
-  position: fixed; top:0; left:0; right:0;
-  z-index: 1000;
+  position: fixed; left:0; right:0;
   height: var(--navH);
   background: rgba(12,14,18,.82);
   backdrop-filter: saturate(140%) blur(10px);
-  border-bottom: 1px solid rgba(255,255,255,.06);
   transition: height .2s ease, background-color .2s ease, border-color .2s ease;
 }
 
@@ -634,12 +582,10 @@ header{
 .nav{
   height: 100%;
   padding-block: 0;                 /* controlăm doar cu height-ul header-ului */
-  display: flex; align-items: center; justify-content: space-between;
 }
 
 /* Logo scale */
 .brand img{
-  height: var(--logoH);
   transition: height .2s ease;
 }
 
@@ -967,10 +913,6 @@ button,
 }
 
 /* Magnetic Green pt Call si WA */
-.btn.magnetic-green {
-  position: relative;
-  overflow: hidden;
-}
 
 .btn.magnetic-green::after {
   content: "";
@@ -1124,31 +1066,6 @@ header, .nav{ position: relative; z-index: 50; }
 }
 
 /* ===== Sticky header + mobile nav ===== */
-:root{
-  --navBg: color-mix(in oklab, var(--bg, #0b0c0f), transparent 10%); /* ușor translucid */
-  --navH: 64px;
-  --logoH: 32px;
-}
-
-header{
-  position: sticky;      /* rămâne lipit sus */
-  top: 0;
-  z-index: 1000;         /* peste hero/aurora */
-  background: var(--navBg);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(255,255,255,.06);
-}
-
-.nav{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  min-height: var(--navH);
-}
-
-.brand img{ height: var(--logoH); display:block; }
 
 /* Desktop nav-list */
 .nav .nav-list{
@@ -1257,7 +1174,6 @@ header{
 }
 
 /* Asigură-te că niciun părinte nu rupe sticky (evită overflow pe body/html) */
-html, body{ overflow-x: clip; }
 
 :root{
   --navH: 64px;
@@ -1329,10 +1245,6 @@ html, body{ overflow-x: clip; }     /* ok; fără overflow-y pe containeri pări
   pointer-events: none;
 }
 
-.btn.magnetic-magenta:hover::before {
-  opacity: 1;
-}
-
 /* === Magnetic Green === */
 .btn.magnetic-green {
   position: relative;
@@ -1354,22 +1266,20 @@ html, body{ overflow-x: clip; }     /* ok; fără overflow-y pe containeri pări
   pointer-events: none;
 }
 
-.btn.magnetic-green:hover::before {
-  opacity: 1;
-}
-
-/* ===== Butoane cu gradient — implicit discret, hover subtil ===== */
+/* ===== Butoane cu gradient magnetic — fără mișcare după mouse ===== */
 .btn.magnetic-green,
-.btn.magnetic-magenta {
+.btn.magnetic-magenta,
+.btn.magnetic-blue {
   position: relative;
   overflow: hidden;
-  transition: color 0.3s ease, background-color 0.3s ease;
-  background: transparent; /* implicit transparent */
+  transition: transform 0.25s ease, color 0.3s ease, background-color 0.3s ease;
+  background: transparent;
 }
 
-/* Fără gradient vizibil în stare normală */
+/* Strat de highlight */
 .btn.magnetic-green::before,
-.btn.magnetic-magenta::before {
+.btn.magnetic-magenta::before,
+.btn.magnetic-blue::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -1378,7 +1288,7 @@ html, body{ overflow-x: clip; }     /* ok; fără overflow-y pe containeri pări
   z-index: -1;
 }
 
-/* Hover cu gradient transparent + pal */
+/* Culori la hover */
 .btn.magnetic-green:hover::before {
   background: linear-gradient(135deg,
     rgba(0, 255, 128, 0.35) 0%,
@@ -1393,32 +1303,54 @@ html, body{ overflow-x: clip; }     /* ok; fără overflow-y pe containeri pări
   opacity: 1;
 }
 
-/* Text și iconițe pe hover să fie puțin mai luminoase */
+.btn.magnetic-blue:hover::before {
+  background: radial-gradient(circle, 
+    rgba(0, 150, 255, 0.25) 0%, 
+    transparent 70%);
+  opacity: 1;
+}
+
+/* Text/icoane mai luminoase la hover */
 .btn.magnetic-green:hover,
-.btn.magnetic-magenta:hover {
+.btn.magnetic-magenta:hover,
+.btn.magnetic-blue:hover {
   color: #fff;
+  transform: translateY(-2px); /* doar se ridică ușor */
 }
 
-/* Asigură-te că efectul magnetic se aplică */
-.btn.magnetic-green,
-.btn.magnetic-magenta {
-  --mx: 50%;
-  --my: 50%;
+/* Click feedback */
+.btn.magnetic-green:active,
+.btn.magnetic-magenta:active,
+.btn.magnetic-blue:active {
+  transform: translateY(-1px) scale(0.98);
 }
 
-/* Magnetic blue effect - pale */
-.magnetic-blue {
+.card.magnetic-card {
   position: relative;
   overflow: hidden;
-  background: var(--btn-bg, transparent);
-  transition: transform 0.2s ease, background 0.3s ease;
+  background: transparent;
+  transition: transform 0.25s ease, box-shadow 0.3s ease;
 }
 
-.magnetic-blue:hover {
-  background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(0, 150, 255, 0.25), transparent 70%);
-  transform: translate(var(--tx, 0), var(--ty, 0));
+/* strat de gradient dinamic */
+.card.magnetic-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), 
+    rgba(0, 150, 255, 0.25), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
 }
 
-.magnetic-blue:active {
-  transform: scale(0.96);
+/* hover vizibil */
+.card.magnetic-card:hover::before {
+  opacity: 1;
+}
+
+/* mic efect de ridicare */
+.card.magnetic-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
 }

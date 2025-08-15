@@ -77,7 +77,7 @@
         <textarea name="notes" rows="3" placeholder="Detalii livrare, interval orar etc."></textarea>
 
         <div class="actions">
-          <button type="button" class="btn ghost" id="btnQuote">Calculează transport</button>
+          <button type="button" class="btn magnetic-blue" id="btnQuote">Calculează transport</button>
           <span class="badge">Transport: <span id="shipQuote" class="chip">—</span></span>
         </div>
 
@@ -89,7 +89,7 @@
         </div>
         <p class="muted">Ramburs/Transfer: comanda este procesată după confirmare. Pentru card, plata se confirmă instant prin NETOPIA.</p>
 
-        <button type="button" class="btn" id="btnPay">Finalizează comanda</button>
+        <button type="button" class="btn magnetic-green" id="btnPay">Finalizează comanda</button>
       </form>
     </section>
 
@@ -113,6 +113,43 @@
     window.CartUI = window.CartUI || { mount(sel){ const root=document.querySelector(sel); if(root) root.innerHTML='<tr><td colspan="5">Coșul este gol.</td></tr>'; } };
   </script>
   <script src="assets/js/cart.js"></script>
+  <script>
+    (() => {
+      const targets = Array.from(document.querySelectorAll(
+        '.btn.magnetic-green, .btn.magnetic-magenta, .btn.magnetic-blue, .card.magnetic-card'
+      ));
+      if (!targets.length) return;
+
+      let active = null, px = 0, py = 0, ticking = false;
+
+      function setVars(el, x, y) {
+        const r = el.getBoundingClientRect();
+        el.style.setProperty('--mx', ((x - r.left) / r.width * 100) + '%');
+        el.style.setProperty('--my', ((y - r.top)  / r.height * 100) + '%');
+      }
+
+      function onEnter(e) { active = e.currentTarget; }
+      function onLeave()  { active = null; }
+
+      targets.forEach(el => {
+        el.addEventListener('pointerenter', onEnter);
+        el.addEventListener('pointerleave', onLeave);
+      });
+
+      window.addEventListener('pointermove', (e) => {
+        if (!active) return;
+        px = e.clientX; py = e.clientY;
+        if (!ticking) {
+          requestAnimationFrame(() => { 
+            if (active) setVars(active, px, py);
+            ticking = false; 
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+    })();
+  </script>
+
   <script>
     function money(n){ return (Math.round(n*100)/100).toFixed(2); }
     try { window.CartUI.mount('[data-order-items]'); } catch(e){ console.warn(e); }

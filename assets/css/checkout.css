@@ -66,3 +66,80 @@
   display: none !important;
   pointer-events: none !important;
 }
+
+/* Magnetic Green doar pe pagina de checkout, cu specificitate mare */
+.checkout-page .btn.magnetic-green{
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.12);
+  background: transparent !important; /* anulăm fundaluri globale */
+  color: #fff;
+  isolation: isolate; /* ca ::before să stea sub text */
+}
+
+/* textul stă deasupra gradientului */
+.checkout-page .btn.magnetic-green > * { position: relative; z-index: 1; }
+
+/* spot-ul verde care urmărește mouse-ul */
+.checkout-page .btn.magnetic-green::before{
+  content: "";
+  position: absolute;
+  inset: -25%;
+  /* gradient dinamic ancorat la --mx / --my din JS */
+  background: radial-gradient(160px 160px at var(--mx,50%) var(--my,50%),
+    rgba(0, 255, 128, 0.55), rgba(0, 200, 100, 0.30) 45%, transparent 70%) !important;
+  opacity: 0;
+  transition: opacity .25s ease, transform .25s ease;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* la hover devine vizibil; nu mișcăm fizic butonul */
+.checkout-page .btn.magnetic-green:hover::before{ opacity: 1; }
+
+/* feedback mic la hover/click, fără drift pe cursor */
+.checkout-page .btn.magnetic-green:hover{ transform: translateY(-2px); }
+.checkout-page .btn.magnetic-green:active{ transform: translateY(-1px) scale(0.98); }
+
+/* în caz că main.css impune altă culoare la hover pe .btn, anulăm decisiv */
+.checkout-page .btn.magnetic-green:hover,
+.checkout-page .btn.magnetic-green:focus{
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Buton albastru magnetic pe checkout */
+.checkout-page .btn.magnetic-blue {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.12);
+  background: transparent !important; /* anulăm ghost sau alte fundaluri */
+  color: #fff;
+  isolation: isolate;
+}
+
+.checkout-page .btn.magnetic-blue > * {
+  position: relative;
+  z-index: 1;
+}
+
+.checkout-page .btn.magnetic-blue::before {
+  content: "";
+  position: absolute;
+  inset: -25%;
+  background: radial-gradient(160px 160px at var(--mx,50%) var(--my,50%),
+    rgba(0, 150, 255, 0.55), rgba(0, 100, 200, 0.30) 45%, transparent 70%) !important;
+  opacity: 0;
+  transition: opacity .25s ease, transform .25s ease;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.checkout-page .btn.magnetic-blue:hover::before { opacity: 1; }
+.checkout-page .btn.magnetic-blue:hover { transform: translateY(-2px); }
+.checkout-page .btn.magnetic-blue:active { transform: translateY(-1px) scale(0.98); }
+.checkout-page .btn.magnetic-blue:hover,
+.checkout-page .btn.magnetic-blue:focus {
+  background: transparent !important;
+  box-shadow: none !important;
+}
