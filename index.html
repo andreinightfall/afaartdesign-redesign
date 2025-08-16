@@ -105,10 +105,10 @@
 
       <div class="nav-cta">
         <a class="btn ghost magnetic-green hide-mobile" href="https://wa.me/+40790323945" target="_blank" rel="noopener">
-          <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+          <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> <span class="mobile-hide-text">WhatsApp</span>
         </a>
         <a class="btn magnetic-green hide-mobile" href="tel:+40790323945">
-          <i class="fa-solid fa-phone" aria-hidden="true"></i>
+          <i class="fa-solid fa-phone" aria-hidden="true"></i> <span class="mobile-hide-text">Sună</span>
         </a>
       </div>
     </nav>
@@ -184,29 +184,31 @@
 
   <!-- ===== Ambience ===== -->
   <section id="ambience" class="ambience" aria-labelledby="ambience-title">
-    <div class="ambience-bg hero-content">
-      <div class="ambience-mover">
-        <div class="ambience-slide a"></div>
-        <div class="ambience-slide b"></div>
-      </div>
-    </div>
-
-    <div class="ambience-overlay">
-      <div class="container">
-        <h2 id="ambience-title" class="gradient-heading">Amenajări interioare premium.</h2>
-        <p class="lead">Plăci selectate cu grijă, texturi profunde și finisaje care rezistă în timp. Eleganță modernă pentru spații memorabile.</p>
-        <div class="badge-row" aria-hidden="true">
-          <span class="chip">Colecții premium</span>
-          <span class="chip">Rezistență & durabilitate</span>
-          <span class="chip">Design contemporan</span>
+    <div class="container wrap">
+      <div class="ambience-bg hero-content">
+        <div class="ambience-mover">
+          <div class="ambience-slide a"></div>
+          <div class="ambience-slide b"></div>
         </div>
-        <div class="hero-cta">
-          <a class="btn ghost magnetic-blue" href="shop-wip.html" data-scroll>
-            <i class="fa-solid fa-store"></i> Magazin Online
-          </a>
-          <a class="btn ghost magnetic-green" href="#contact" data-scroll>
-            <i class="fa-solid fa-envelope"></i> Contactează-ne
-          </a>
+      </div>
+
+      <div class="ambience-overlay">
+        <div class="container">
+          <h2 id="ambience-title" class="gradient-heading">Amenajări interioare premium.</h2>
+          <p class="lead">Plăci selectate cu grijă, texturi profunde și finisaje care rezistă în timp. Eleganță modernă pentru spații memorabile.</p>
+          <div class="badge-row" aria-hidden="true">
+            <span class="chip">Colecții premium</span>
+            <span class="chip">Rezistență & durabilitate</span>
+            <span class="chip">Design contemporan</span>
+          </div>
+          <div class="hero-cta">
+            <a class="btn ghost magnetic-blue" href="shop-wip.html" data-scroll>
+              <i class="fa-solid fa-store"></i> Magazin Online
+            </a>
+            <a class="btn ghost magnetic-green" href="#contact" data-scroll>
+              <i class="fa-solid fa-envelope"></i> Contactează-ne
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -368,25 +370,25 @@
     <div class="container">
       <div class="grid cards">
         
-        <article class="card magnetic-card span-6">
+        <article class="card magnetic-card ghost-card span-6">
           <div class="icon"><i class="fas fa-truck"></i></div>
           <div class="title">Livrare în toată țara</div>
           <p class="muted">Toate produsele noastre pot fi livrate oriunde în țară prin curier sau mașini proprii.</p>
         </article>
 
-        <article class="card magnetic-card span-6">
+        <article class="card magnetic-card ghost-card span-6">
           <div class="icon"><i class="fas fa-undo-alt"></i></div>
           <div class="title">Retur produse</div>
           <p class="muted">Produsele noastre pot fi returnate în maxim 30 de zile de la achiziție.</p>
         </article>
 
-        <article class="card magnetic-card span-6">
+        <article class="card magnetic-card ghost-card span-6">
           <div class="icon"><i class="fas fa-lock"></i></div>
           <div class="title">Plăți securizate</div>
           <p class="muted">Toate plățile cu cardul sunt securizate, evitând orice tip de fraudă bancară.</p>
         </article>
 
-        <article class="card magnetic-card span-6">
+        <article class="card magnetic-card ghost-card span-6">
           <div class="icon"><i class="fas fa-headset"></i></div>
           <div class="title">Asistență</div>
           <p class="muted">Oferim asistență gratuită pentru alegerea produselor potrivite nevoilor tale.</p>
@@ -547,9 +549,47 @@
         
         <!-- Logo brand -->
         <section class="fcol footer-logo">
-          <a href="/index.html">
-            <img src="assets/img/brand-logo.png" alt="Afa Art Design" style="max-width: 160px;">
-          </a>
+          <style>
+            .image-wrapper {
+              position: relative;
+              display: inline-block;
+              border-radius: 1rem;
+              overflow: hidden; /* keeps the glow inside */
+            }
+
+            .image-wrapper img {
+              display: block;
+              border-radius: inherit;
+              transition: transform 0.3s ease;
+            }
+
+            .image-wrapper.magnetic-blue img {
+              transform: translate(var(--tx, 0), var(--ty, 0));
+            }
+
+            .image-wrapper.magnetic-blue::after {
+              content: "";
+              position: absolute;
+              inset: 0;
+              border-radius: inherit;
+              background: radial-gradient(
+                300px circle at var(--x, 50%) var(--y, 50%),
+                rgba(0, 128, 255, 0.25),
+                transparent 80%
+              );
+              opacity: 0;
+              transition: opacity 0.2s ease;
+            }
+
+            .image-wrapper.magnetic-blue:hover::after {
+              opacity: 1;
+            }
+          </style>
+          <div class="magnetic-blue image-wrapper">
+            <a href="/index.html">
+              <img src="assets/img/brand-logo.png" class="magnetic-blue my-image" alt="Afa Art Design" style="max-width: 160px;">
+            </a>
+          </div>
         </section>
 
         <!-- Link-uri utile -->

@@ -1618,15 +1618,49 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Footer */
 .site-footer{
   background: rgba(12,14,18,.92);
   border-top: 1px solid rgba(255,255,255,.06);
   color: #e6e8ee;
   padding: clamp(28px, 5vw, 56px) 0 20px;
 }
-.site-footer a{ color: #e6e8ee; text-decoration: none; opacity:.95; }
-.site-footer a:hover{ opacity:1; text-decoration: underline; }
 
+/* link-uri footer default */
+.site-footer a{
+  color: #e6e8ee;
+  text-decoration: none;
+  opacity:.95;
+  position: relative;
+  transition: color .2s ease, opacity .2s ease;
+  padding-bottom: 2px;
+}
+
+/* underline animat */
+.site-footer a::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .25s ease;
+  opacity:.95;
+}
+
+/* hover efect */
+.site-footer a:hover{
+  color: #3B82F6; /* albastru */
+  opacity: 1;
+}
+.site-footer a:hover::after{
+  transform: scaleX(1);
+}
+
+/* structură grid */
 .footer-grid{
   display: grid;
   gap: 28px;
@@ -1637,6 +1671,7 @@ html {
 .flist{ list-style:none; margin:0; padding:0; display:grid; gap:8px; }
 .flist i{ margin-right: 8px; opacity:.9; }
 
+/* social icons */
 .social{ list-style:none; display:flex; gap:10px; margin:8px 0 0; padding:0; }
 .social a{
   width: 36px; height: 36px; display:grid; place-items:center;
@@ -1644,8 +1679,16 @@ html {
   background: rgba(255,255,255,.04);
   transition: transform .15s ease, background .15s ease, border-color .15s ease;
 }
-.social a:hover{ transform: translateY(-2px); background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.3); }
+/* dezactivăm underline pe social */
+.social a::after{ content:none; }
 
+.social a:hover{
+  transform: translateY(-2px);
+  background: rgba(255,255,255,.08);
+  border-color: rgba(255,255,255,.3);
+}
+
+/* newsletter */
 .newsletter{ display:flex; gap:10px; align-items:center; }
 .newsletter input[type="email"]{
   flex:1; min-width: 0;
@@ -1657,6 +1700,7 @@ html {
 }
 .newsletter input::placeholder{ color: rgba(255,255,255,.7); }
 
+/* footer bottom */
 .footer-bottom{
   display:flex; align-items:center; justify-content:space-between;
   gap: 12px;
@@ -1665,9 +1709,8 @@ html {
   color: rgba(230,232,238,.85);
 }
 .footer-bottom .mini-links{ display:flex; gap: 14px; }
-.footer-bottom .mini-links a{ opacity:.8; }
-.footer-bottom .mini-links a:hover{ opacity:1; }
 
+/* responsive */
 @media (max-width: 900px){
   .fcol{ grid-column: span 6; }
 }
@@ -1675,6 +1718,7 @@ html {
   .fcol{ grid-column: 1 / -1; }
   .newsletter{ flex-direction: column; align-items: stretch; }
 }
+
 
 /* Hover bridge pentru mini-cart */
 #miniCart.cart { position: relative; }
@@ -1778,3 +1822,33 @@ header{
 @media (min-width: 901px){
   .nav{ padding: 1rem 2rem; }    /* mai generos pe desktop */
 }
+
+/* Card transparent cu efect magnetic */
+.card.ghost-card {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 1rem;
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Icon mai mare și spațiu frumos */
+.card.ghost-card .icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: inherit;
+}
+
+.card.ghost-card .title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.card.ghost-card .muted {
+  opacity: 0.8;
+}
+
+/* Folosim deja efectul magnetic definit la .magnetic-card */
