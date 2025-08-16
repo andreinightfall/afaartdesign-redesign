@@ -1,18 +1,86 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
+  <!-- Charset & viewport -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Afa Art Design • Gresie, Parchet, Vopsea Decorativă – Galați</title>
-  <meta name="description" content="Showroom Afa Art Design Galați: gresie, parchet, vopsea decorativă Ferrara Design, riflaje, plinte și montaj profesionist în Galați, Brăila, Tulcea, Constanța." />
+
+  <!-- 🏷️ Titlu SEO-friendly -->
+  <title>Afa Art Design - Vopsea Decorativă, Plăci Ceramice, Parchet Premium | Galați & împrejurimi</title>
+
+  <!-- 🔎 Meta Description -->
+  <meta name="description" content="Showroom Afa Art Design din Galați: vopsea decorativă, plăci ceramice și parchet premium. Consultanță și montaj în Galați și zone apropiate, inclusiv Brăila, Tulcea și Constanța." />
+
+  <!-- Meta utile -->
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta name="theme-color" content="#0c0e12" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://afaartdesign.ro/" />
+
+  <!-- Hreflang (RO) -->
+  <link rel="alternate" href="https://afaartdesign.ro/" hreflang="ro-ro" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ro_RO" />
+  <meta property="og:site_name" content="Afa Art Design" />
+  <meta property="og:title" content="Afa Art Design - Vopsea Decorativă, Plăci Ceramice, Parchet Premium" />
+  <meta property="og:description" content="Showroom din Galați cu produse premium pentru design interior. Consultanță și montaj în Galați, Brăila, Tulcea și Constanța." />
+  <meta property="og:url" content="https://afaartdesign.ro/" />
+  <meta property="og:image" content="https://afaartdesign.ro/assets/img/og-banner.jpg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Afa Art Design - Vopsea Decorativă, Plăci Ceramice, Parchet Premium" />
+  <meta name="twitter:description" content="Produse premium și montaj în Galați și zone apropiate (Brăila, Tulcea, Constanța)." />
+  <meta name="twitter:image" content="https://afaartdesign.ro/assets/img/og-banner.jpg" />
+
+  <!-- Structured Data: LocalBusiness (fără branduri externe) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HomeAndConstructionBusiness",
+    "name": "Afa Art Design",
+    "url": "https://afaartdesign.ro/",
+    "image": "https://afaartdesign.ro/assets/img/og-banner.jpg",
+    "email": "mailto:afaartdesign@gmail.com",
+    "telephone": "+40 790 323 945",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Str. 1 Decembrie 1918 nr. 13, zona 2 Babe (lângă Digi)",
+      "addressLocality": "Galați",
+      "postalCode": "800552",
+      "addressCountry": "RO"
+    },
+    "areaServed": [
+      { "@type": "City", "name": "Galați" },
+      { "@type": "City", "name": "Brăila" },
+      { "@type": "City", "name": "Tulcea" },
+      { "@type": "City", "name": "Constanța" }
+    ],
+    "sameAs": [
+      "https://www.facebook.com/afaartdesign",
+      "https://www.instagram.com/afaartdesign"
+    ]
+  }
+  </script>
+
+  <!-- Favicon -->
   <link rel="icon" href="assets/icons/favicon.ico" />
-  <!-- Local Satoshi already exists in proiect (assets/css/satoshi.css) -->
+
+  <!-- CSS (ordinea corectă) -->
   <link rel="stylesheet" href="assets/css/satoshi.css" />
   <link rel="stylesheet" href="https://unpkg.com/photoswipe@5/dist/photoswipe.css" />
-  <link rel="stylesheet" href="assets/css/gallery.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/gallery.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" />
   <link rel="stylesheet" href="assets/css/main.css" />
+
+  <!-- (Opțional) Preload pentru imaginea din hero -->
+  <!-- <link rel="preload" as="image" href="assets/img/hero/cover.webp" /> -->
 </head>
+
 <body>
   <!-- ===== Header ===== -->
   <header>
@@ -28,7 +96,7 @@
 
       <div class="nav-list" id="primaryNav">
         <a href="#promotii" data-scroll>Promoții</a>
-        <a href="shop.html" data-scroll>Magazin</a>
+        <a href="shop-wip.html" data-scroll>Magazin</a>
         <a href="#servicii" data-scroll>Servicii</a>
         <a href="#galerie"  data-scroll>Galerie</a>
         <a href="#echipa"   data-scroll>Echipa</a>
@@ -133,7 +201,7 @@
           <span class="chip">Design contemporan</span>
         </div>
         <div class="hero-cta">
-          <a class="btn ghost magnetic-blue" href="shop.html" data-scroll>
+          <a class="btn ghost magnetic-blue" href="shop-wip.html" data-scroll>
             <i class="fa-solid fa-store"></i> Magazin Online
           </a>
           <a class="btn ghost magnetic-green" href="#contact" data-scroll>
@@ -489,7 +557,7 @@
           <h4 class="ftitle">Link-uri utile</h4>
           <ul class="flist">
             <li><a href="/index.html"><i class="fa-solid fa-house"></i> Acasă</a></li>
-            <li><a href="/shop.html"><i class="fa-solid fa-store"></i> Magazin Online</a></li>
+            <li><a href="/shop-wip.html"><i class="fa-solid fa-store"></i> Magazin Online</a></li>
             <li><a href="/#contact"><i class="fa-solid fa-envelope-open-text"></i> Contact</a></li>
           </ul>
         </section>

@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="ro">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Magazin Online Afa Art Design - În lucru...</title>
+    <meta name="description" content="Magazin online Afa Art Design - În lucru...">
+    <link rel="icon" href="assets/icons/favicon.ico" />
+    <link rel="stylesheet" href="assets/css/satoshi.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    <style>
+    /* Container centrat */
+    .section .container{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        text-align:center;
+        gap:2rem;
+        min-height:80vh;
+    }
+
+    /* Card special "în lucru" – transparent */
+    .card.wipshop{
+        padding:2rem 3rem;
+        border-radius:1.5rem;
+        background:transparent;    /* fully transparent */
+        box-shadow:none;           /* no shadow */
+        max-width:480px;
+        transition:transform .3s ease, text-shadow .3s ease, opacity .3s ease;
+        color:inherit;             /* adoptă culoarea din context */
+    }
+
+    .card.wipshop:hover{
+        transform:translateY(-4px);
+        text-shadow:0 0 10px rgba(0,0,0,.15); /* subtil; editează/șterge dacă nu-l vrei */
+    }
+
+    .card.wipshop .icon{
+        font-size:3rem;
+        margin-bottom:1rem;
+        line-height:1;
+    }
+
+    .card.wipshop .title{
+        font-size:1.6rem;
+        font-weight:700;
+        margin-bottom:.75rem;
+    }
+
+    .card.wipshop .muted{
+        font-size:1rem;
+        opacity:.75;               /* „muted” fără a fixa o culoare */
+    }
+
+    /* Card magnetizat: nu se mișcă, doar glow dinamic */
+    .magnetic-card{
+    position: relative;
+    isolation: isolate;         /* ca să nu „scape” efectul în afară */
+    will-change: filter;
+    }
+
+    /* Overlay care urmărește cursorul via --mx / --my setate de script */
+    .magnetic-card::before{
+    content:"";
+    position:absolute;
+    inset:-2px;
+    border-radius:inherit;
+    pointer-events:none;
+    background:
+        radial-gradient(220px 220px at var(--mx,50%) var(--my,50%),
+        var(--mag-start, rgba(16,185,129,.28)),
+        transparent 60%);
+    opacity:.85;
+    transition: opacity .25s ease, filter .25s ease;
+    z-index:-1;
+    }
+
+    /* Tonuri implicite pt. „green”; poți mappa și alte scheme (magenta/blue) */
+    .magnetic-green{
+    --mag-start: rgba(16,185,129,.28);  /* verde deschis */
+    }
+
+    /* La hover, un pic mai intens, dar fără translate pe card */
+    .magnetic-card:hover::before{
+    opacity:1;
+    filter: saturate(1.1) blur(0.2px);
+    }
+
+    /* Asigură că cardul tău transparent rămâne nemișcat */
+    .card.wipshop{
+    transform:none !important;          /* dezactivează ridicarea pe hover */
+    text-shadow:none !important;
+    background:transparent;
+    box-shadow:none;
+    }
+    </style>
+
+    </head>
+
+    <body>
+    <header>
+        <nav class="container nav">
+            <a class="brand" href="index.html"><img src="assets/img/brand-logo.png" alt="Afa Art Design"></a>
+
+            <div class="nav-cta">
+                <a class="btn ghost magnetic-green" href="https://wa.me/+40790323945" target="_blank" rel="noopener">
+                <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                </a>
+                <a class="btn magnetic-green" href="tel:+40790323945">
+                <i class="fa-solid fa-phone" aria-hidden="true"></i>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="section">
+    <div class="container">
+        <div>
+            <article class="card wipshop magnetic-card magnetic-green">
+            <div class="icon">🛠️</div>
+            <div class="title">Momentan în lucru...</div>
+            <p class="muted">Magazinul nostru online este momentan în lucru. Te rugăm să revii!</p>
+            </article>
+        </div>
+
+        <a class="btn ghost magnetic-green" href="index.html" data-scroll>
+        <i class="fa-solid fa-arrow-left"></i>
+        Pagina principală
+        </a>
+    </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+        <div class="footer-grid">
+            
+            <!-- Logo brand -->
+            <section class="fcol footer-logo">
+            <a href="/index.html">
+                <img src="assets/img/brand-logo.png" alt="Afa Art Design" style="max-width: 160px;">
+            </a>
+            </section>
+
+            <!-- Link-uri utile -->
+            <section class="fcol">
+            <h4 class="ftitle">Link-uri utile</h4>
+            <ul class="flist">
+                <li><a href="/index.html"><i class="fa-solid fa-house"></i> Acasă</a></li>
+                <li><a href="/wip.html"><i class="fa-solid fa-store"></i> Magazin Online</a></li>
+                <li><a href="/#contact"><i class="fa-solid fa-envelope-open-text"></i> Contact</a></li>
+            </ul>
+            </section>
+
+            <!-- Politici -->
+            <section class="fcol">
+            <h4 class="ftitle">Politicile noastre</h4>
+            <ul class="flist">
+                <li><a href="/termeni-si-conditii.html"><i class="fa-solid fa-scale-balanced"></i> Termeni & condiții</a></li>
+                <li><a href="/politica-confidentialitate.html"><i class="fa-solid fa-shield-halved"></i> Politica de confidențialitate</a></li>
+                <li><a href="/politica-returnare.html"><i class="fa-solid fa-rotate-left"></i> Politica de returnare</a></li>
+                <li><a href="/politica-cookie.html"><i class="fa-solid fa-cookie-bite"></i> Politica cookie</a></li>
+            </ul>
+            </section>
+
+            <!-- Newsletter -->
+            <section class="fcol">
+            <h4 class="ftitle">Newsletter</h4>
+            <p class="muted">Abonează-te ca să primești cele mai noi oferte Afa Art Design.</p>
+            <form class="newsletter" action="#" method="post" onsubmit="event.preventDefault(); /* TODO: integrează cu backend/email service */">
+                <label class="sr-only" for="nl-email">Email</label>
+                <input id="nl-email" type="email" name="email" placeholder="Email-ul tău" required>
+                <button class="btn ghost magnetic-green" type="submit">Abonare</button>
+            </form>
+            </section>
+
+        </div>
+
+        <div class="footer-bottom">
+            <small>© <span id="y"></span> Afa Art Design — Toate drepturile rezervate.</small>
+            <div class="mini-links">
+            <a href="/politica-confidentialitate.html">Confidențialitate</a>
+            <a href="/politica-cookie.html">Cookies</a>
+            <a href="/termeni-si-conditii.html">Termeni</a>
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <!-- === MAGNETIC HOVER (unificat, pentru .btn.magnetic-green/.magnetic-magenta) === -->
+    <script>
+        (() => {
+        const targets = Array.from(document.querySelectorAll(
+            '.btn.magnetic-green, .btn.magnetic-magenta, .btn.magnetic-blue, .card.magnetic-card'
+        ));
+        if (!targets.length) return;
+
+        let active = null, px = 0, py = 0, ticking = false;
+
+        function setVars(el, x, y) {
+            const r = el.getBoundingClientRect();
+            el.style.setProperty('--mx', ((x - r.left) / r.width * 100) + '%');
+            el.style.setProperty('--my', ((y - r.top) / r.height * 100) + '%');
+        }
+
+        function onEnter(e) { active = e.currentTarget; }
+        function onLeave() { active = null; }
+
+        targets.forEach(el => {
+            el.addEventListener('pointerenter', onEnter);
+            el.addEventListener('pointerleave', onLeave);
+        });
+
+        window.addEventListener('pointermove', (e) => {
+            if (!active) return;
+            px = e.clientX; py = e.clientY;
+            if (!ticking) {
+            requestAnimationFrame(() => { 
+                if (active) setVars(active, px, py); 
+                ticking = false; 
+            });
+            ticking = true;
+            }
+        }, { passive: true });
+        })();
+    </script>
+
+    <script>
+        // Magnetic hover effect (pale blue) for .magnetic-blue
+        document.querySelectorAll('.magnetic-blue').forEach(btn => {
+        btn.addEventListener('mousemove', e => {
+            const rect = btn.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+            btn.style.setProperty('--x', `${x}%`);
+            btn.style.setProperty('--y', `${y}%`);
+            btn.style.setProperty('--tx', `${(x - 50) / 15}px`);
+            btn.style.setProperty('--ty', `${(y - 50) / 15}px`);
+        });
+        btn.addEventListener('mouseleave', () => {
+            btn.style.removeProperty('--tx');
+            btn.style.removeProperty('--ty');
+        });
+        });
+    </script>
