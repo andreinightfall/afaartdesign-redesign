@@ -403,7 +403,7 @@ h1 {
 .cta-bar .wrap{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:center}
 
 /* ===== Footer ===== */
-footer{margin-top:60px;border-top:1px solid rgba(255,255,255,.08);padding:28px 0;color:var(--muted)}
+footer{border-top:1px solid rgba(255,255,255,.08);padding:28px 0;color:var(--muted)}
 footer a{color:var(--muted)}
 
 /* ===== Legacy gallery constraints (kept, but our new grid overrides it) ===== */
