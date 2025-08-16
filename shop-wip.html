@@ -129,6 +129,39 @@
         <i class="fa-solid fa-arrow-left"></i>
         Pagina principală
         </a>
+        <br><br><br>
+        <!-- Demo login (front-end only) -->
+         <style>.login-wrap input{
+            width:100%;
+            padding:.85rem 1rem;
+            border:1px solid color-mix(in oklab, var(--fg, #fff), transparent 70%);
+            border-radius:.9rem;
+            background:color-mix(in oklab, var(--bg, #0b0c10), white 4%);
+            color:inherit;
+            outline:none;
+            }
+            .login-wrap .row{ margin:.5rem 0; }
+            .login-wrap input:focus{ border-color: color-mix(in oklab, var(--brand, #10b981), white 30%); }
+        </style>
+        <div id="login" class="login-wrap" style="max-width:420px; width:100%; margin-top:1.5rem;">
+        <h3 style="margin:0 0 .75rem 0; font-weight:700;">Acces shop (admin)</h3>
+
+        <form id="wipLogin" autocomplete="off" novalidate>
+            <div class="row">
+            <label for="wuser" class="sr-only">Username</label>
+            <input id="wuser" name="username" type="text" placeholder="Username" required>
+            </div>
+            <div class="row">
+            <label for="wpass" class="sr-only">Parolă</label>
+            <input id="wpass" name="password" type="password" placeholder="Parolă" required>
+            </div>
+            <button class="btn ghost magnetic-blue" type="submit" style="width:100%; margin-top:.5rem;">
+            <i class="fa-solid fa-right-to-bracket"></i> Login
+            </button>
+            <p id="wipMsg" class="muted" style="display:none; color:#e11; margin-top:.75rem;">Date incorecte.</p>
+        </form>
+        </div>
+
     </div>
     </section>
 
@@ -187,6 +220,28 @@
         </div>
         </div>
     </footer>
+    <script>
+    (()=>{
+        const form = document.getElementById('wipLogin');
+        const msg  = document.getElementById('wipMsg');
+        if(!form) return;
+
+        form.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        const user = (document.getElementById('wuser').value || '').trim();
+        const pass = document.getElementById('wpass').value || '';
+
+        if(user === 'admin' && pass === 'pass1234'){
+            sessionStorage.setItem('afaShopAuth', '1'); // flag for this tab/session
+            window.location.href = 'shop.html';
+        } else {
+            msg.style.display = 'block';
+            form.animate([{transform:'translateX(0)'},{transform:'translateX(-6px)'},{transform:'translateX(6px)'},{transform:'translateX(0)'}],
+                        {duration:200, iterations:1});
+        }
+        });
+    })();
+    </script>
 
     <!-- === MAGNETIC HOVER (unificat, pentru .btn.magnetic-green/.magnetic-magenta) === -->
     <script>
