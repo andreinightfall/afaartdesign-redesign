@@ -79,6 +79,29 @@
 
   <!-- (Opțional) Preload pentru imaginea din hero -->
   <!-- <link rel="preload" as="image" href="assets/img/hero/cover.webp" /> -->
+  <style>
+    /* Header normal */
+    header{
+      position: relative;      /* nu sticky */
+      z-index: 1000;
+      transition: background-color .2s ease, box-shadow .2s ease, padding .2s ease;
+    }
+
+    /* Când e fixat */
+    header.is-pinned{
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      width: 100%;
+      background: var(--navBg, rgba(12,14,18,.92));
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      box-shadow: 0 8px 24px rgba(0,0,0,.18);
+    }
+
+    /* Spațiul care previne „saltul” layout-ului */
+    .header-placeholder{ height: var(--headerH, 0px); }
+  </style>
 </head>
 
 <body>
@@ -86,7 +109,7 @@
   <header>
     <nav class="container nav" id="nav" aria-label="Navigare principală">
       <a class="brand" href="#home" aria-label="Afa Art Design – Acasă">
-        <img src="assets/img/brand-logo.png" alt="Afa Art Design" />
+        <img src="/assets/img/brand-logo.png" alt="Afa Art Design" />
       </a>
 
       <button class="mobile-toggle"
@@ -96,7 +119,7 @@
 
       <div class="nav-list" id="primaryNav">
         <a href="#promotii" data-scroll>Promoții</a>
-        <a href="shop-wip.html" data-scroll>Magazin</a>
+        <a href="/shop-wip.html" data-scroll>Magazin</a>
         <a href="#servicii" data-scroll>Servicii</a>
         <a href="#galerie"  data-scroll>Galerie</a>
         <a href="#echipa"   data-scroll>Echipa</a>
@@ -143,7 +166,7 @@
       <article id="promoSpot" class="grid product magnetic-card" data-product aria-roledescription="slideshow" aria-label="Promoțiile lunii">
         <div class="spot-frame">
           <span class="spot-price-chip magnetic-magenta"></span>
-          <img class="spot-img a" src="assets/img/promo-calotagold.jpg" alt="Calota Gold 60×120" loading="lazy">
+          <img class="spot-img a" src="/assets/img/promo-calotagold.jpg" alt="Calota Gold 60×120" loading="lazy">
           <img class="spot-img b" alt="" aria-hidden="true" loading="lazy">
         </div>
         <div class="spot-dots" role="tablist" aria-label="Navigare produse"></div>
@@ -202,7 +225,7 @@
             <span class="chip">Design contemporan</span>
           </div>
           <div class="hero-cta">
-            <a class="btn ghost magnetic-blue" href="shop-wip.html" data-scroll>
+            <a class="btn ghost magnetic-blue" href="/shop-wip.html" data-scroll>
               <i class="fa-solid fa-store"></i> Magazin Online
             </a>
             <a class="btn ghost magnetic-green" href="#contact" data-scroll>
@@ -228,49 +251,49 @@
 
         <!-- Calota Gold -->
         <article class="product magnetic-card">
-          <img class="thumb" src="assets/img/promo-calotagold.jpg" alt="Calota Gold 60×120" loading="lazy" />
+          <img class="thumb" src="/assets/img/promo-calotagold.jpg" alt="Calota Gold 60×120" loading="lazy" />
           <div class="meta"><strong>Calota Gold • 60×120</strong><span class="price">69 RON/mp</span></div>
         </article>
 
         <!-- Emi White -->
         <article class="product magnetic-card">
-          <img class="thumb" src="assets/img/promo-emiwhite.jpg" alt="Emi White 60×120" loading="lazy" />
+          <img class="thumb" src="/assets/img/promo-emiwhite.jpg" alt="Emi White 60×120" loading="lazy" />
           <div class="meta"><strong>Emi White • 60×120</strong><span class="price">75 RON/mp</span></div>
         </article>
 
         <!-- Plazzo -->
         <article class="product magnetic-card">
-          <img class="thumb" src="assets/img/promo-plazzo.jpeg" alt="Plazzo 60×120" loading="lazy" />
+          <img class="thumb" src="/assets/img/promo-plazzo.jpeg" alt="Plazzo 60×120" loading="lazy" />
           <div class="meta"><strong>Plazzo • 60×120</strong><span class="price">75 RON/mp</span></div>
         </article>
 
         <!-- Naxo Aqua -->
         <article class="product magnetic-card">
-          <img class="thumb" src="assets/img/promo-naxo.jpeg" alt="Naxo Aqua 60×120" loading="lazy" />
+          <img class="thumb" src="/assets/img/promo-naxo.jpeg" alt="Naxo Aqua 60×120" loading="lazy" />
           <div class="meta"><strong>Naxo Aqua • 60×120</strong><span class="price">75 RON/mp</span></div>
         </article>
 
         <!-- Moro Black -->
         <article class="product magnetic-card">
-          <img class="thumb" src="assets/img/promo-moroblack.jpg" alt="Moro Black 60×120" loading="lazy" />
+          <img class="thumb" src="/assets/img/promo-moroblack.jpg" alt="Moro Black 60×120" loading="lazy" />
           <div class="meta"><strong>Moro Black • 60×120</strong><span class="price">75 RON/mp</span></div>
         </article>
 
         <!-- Platinum Black -->
         <article class="product magnetic-card">
-          <img class="thumb" src="assets/img/promo-platinumblack.jpg" alt="Platinum Black 60×120" loading="lazy" />
+          <img class="thumb" src="/assets/img/promo-platinumblack.jpg" alt="Platinum Black 60×120" loading="lazy" />
           <div class="meta"><strong>Platinum Black • 60×120</strong><span class="price">75 RON/mp</span></div>
         </article>
 
         <!-- Brazil 1 -->
         <article class="product magnetic-card">
-          <img class="thumb" src="assets/img/promo-brazil.jpeg" alt="Brazil 1 60.5×121" loading="lazy" />
+          <img class="thumb" src="/assets/img/promo-brazil.jpeg" alt="Brazil 1 60.5×121" loading="lazy" />
           <div class="meta"><strong>Brazil 1 • 60.5×121</strong><span class="price">79,99 RON/mp</span></div>
         </article>
 
         <!-- Aspire Gold -->
         <article class="product magnetic-card">
-          <img class="thumb" src="assets/img/promo-aspiregold.jpg" alt="Aspire Gold 60×120" loading="lazy" />
+          <img class="thumb" src="/assets/img/promo-aspiregold.jpg" alt="Aspire Gold 60×120" loading="lazy" />
           <div class="meta"><strong>Aspire Gold • 60×120</strong><span class="price">79,99 RON/mp</span></div>
         </article>
 
@@ -1077,6 +1100,29 @@
     if(!reduceMotion){
       timer = setInterval(next, DURATION);
     }
+  })();
+  </script>
+  <!-- === STICKY HEADER === -->
+  <script>
+  (()=> {
+    const header = document.querySelector('header');
+    if (!header) return;
+
+    // Placeholder pt prevenit "saltul" layout-ului
+    const ph = document.createElement('div');
+    ph.className = 'header-placeholder';
+    header.parentNode.insertBefore(ph, header);
+
+    function pin(on){
+      header.classList.toggle('is-pinned', on);
+      ph.style.setProperty('--headerH', on ? header.offsetHeight + 'px' : '0px');
+    }
+
+    function onScroll(){ pin(window.scrollY > 0); }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', ()=> { if (header.classList.contains('is-pinned')) pin(true); });
+
+    onScroll();
   })();
   </script>
 

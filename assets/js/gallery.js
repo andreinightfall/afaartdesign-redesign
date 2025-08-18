@@ -5,8 +5,8 @@ const targetId = window.__AFA_GALLERY_TARGET || 'legacy-gallery';
 const galleryEl = document.getElementById(targetId);
 
 // Folderele tale
-const fullImageFolder = "assets/img/galerie/";
-const thumbImageFolder = "assets/img/thumbnails/";
+const fullImageFolder = "/assets/img/galerie/";
+const thumbImageFolder = "/assets/img/thumbnails/";
 
 // Lista ta de fișiere (exact cum mi-ai trimis-o)
 const imageList = [
@@ -82,7 +82,7 @@ const imageList = [
 // 1) Încărcăm manifestul cu dimensiuni (generat de Sharp)
 let manifest = {};
 try {
-  const res = await fetch('assets/img/manifest.json', { cache: 'no-store' });
+  const res = await fetch('/assets/img/manifest.json', { cache: 'no-store' });
   if (res.ok) manifest = await res.json();
 } catch (e) {
   console.warn('Fără manifest.json – lightbox va calcula dimensiunile în zbor.');
