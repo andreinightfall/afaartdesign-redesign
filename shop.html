@@ -210,76 +210,246 @@
     </section>
   </main>
 
-  <!-- Secțiune showroom -->
-  <section class="section showroom-info" style="background: var(--panel-2); padding: 40px 0; border-top: 1px solid rgba(255,255,255,.06);">
-    <div class="container" style="display: flex; flex-wrap: wrap; gap: 30px; align-items: flex-start;">
-      
-      <!-- Logo -->
-      <div style="flex: 1 1 200px;">
-        <img src="assets/img/brand-logo.png" alt="Afa Art Design" style="max-width: 180px;">
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <!-- Logo brand -->
+        <section class="fcol footer-logo">
+          <style>
+            .image-wrapper {
+              position: relative;
+              display: inline-block;
+              border-radius: 1rem;
+              overflow: hidden; /* keeps the glow inside */
+            }
+
+            .image-wrapper img {
+              display: block;
+              border-radius: inherit;
+              transition: transform 0.3s ease;
+            }
+
+            .image-wrapper.magnetic-blue img {
+              transform: translate(var(--tx, 0), var(--ty, 0));
+            }
+
+            .image-wrapper.magnetic-blue::after {
+              content: "";
+              position: absolute;
+              inset: 0;
+              border-radius: inherit;
+              background: radial-gradient(
+                300px circle at var(--x, 50%) var(--y, 50%),
+                rgba(0, 128, 255, 0.25),
+                transparent 80%
+              );
+              opacity: 0;
+              transition: opacity 0.2s ease;
+            }
+
+            .image-wrapper.magnetic-blue:hover::after {
+              opacity: 1;
+            }
+          </style>
+          <div class="magnetic-blue image-wrapper">
+            <a href="/index.html">
+              <img src="/assets/img/brand-logo.png" class="magnetic-blue my-image" alt="Afa Art Design" style="max-width: 160px;">
+            </a>
+          </div>
+        </section>
+
+        <!-- Link-uri utile -->
+        <section class="fcol">
+          <h4 class="ftitle">Link-uri utile</h4>
+          <ul class="flist">
+            <li><a href="/index.html"><i class="fa-solid fa-house"></i> Acasă</a></li>
+            <li><a href="/shop-wip.html"><i class="fa-solid fa-store"></i> Magazin Online</a></li>
+            <li><a href="/#contact"><i class="fa-solid fa-envelope-open-text"></i> Contact</a></li>
+          </ul>
+        </section>
+
+        <!-- Politici -->
+        <section class="fcol">
+          <h4 class="ftitle">Politicile noastre</h4>
+          <ul class="flist">
+            <li><a href="/termeni-si-conditii.html"><i class="fa-solid fa-scale-balanced"></i> Termeni & condiții</a></li>
+            <li><a href="/politica-confidentialitate.html"><i class="fa-solid fa-shield-halved"></i> Politica de confidențialitate</a></li>
+            <li><a href="/politica-returnare.html"><i class="fa-solid fa-rotate-left"></i> Politica de returnare</a></li>
+            <li><a href="/politica-cookie.html"><i class="fa-solid fa-cookie-bite"></i> Politica cookie</a></li>
+          </ul>
+        </section>
+
+        <!-- Newsletter -->
+        <section class="fcol">
+          <h4 class="ftitle">Newsletter</h4>
+          <p class="muted">Abonează-te ca să primești cele mai noi oferte Afa Art Design.</p>
+          <form class="newsletter" action="#" method="post" onsubmit="event.preventDefault(); /* TODO: integrează cu backend/email service */">
+            <label class="sr-only" for="nl-email">Email</label>
+            <input id="nl-email" type="email" name="email" placeholder="Email-ul tău" required>
+            <button class="btn ghost magnetic-green" type="submit">Abonare</button>
+          </form>
+        </section>
+
       </div>
 
-      <!-- Adresă și program -->
-      <div style="flex: 2 1 300px; color: var(--text);">
-        <h3 style="margin-bottom: 10px;">Showroom Afa Art Design</h3>
-        <p class="muted">Str. 1 Decembrie 1918 nr. 13, zona 2 Babe (lângă Digi), Galați</p>
-        <ul style="list-style: none; padding: 0; margin: 10px 0 0;">
-          <li>Luni: 09:00–17:00</li>
-          <li>Marți: 09:00–17:00</li>
-          <li>Miercuri: 09:00–17:00</li>
-          <li>Joi: 09:00–17:00</li>
-          <li>Vineri: 09:00–17:00</li>
-          <li>Sâmbătă: 10:00–14:00</li>
-          <li>Duminică: Închis</li>
-        </ul>
-      </div>
-
-      <!-- Map card -->
-      <div class="card--map">
-        <div class="map-embed">
-          <iframe
-            title="Harta showroom Afa Art Design"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4005.7508295430744!2d28.022234999999995!3d45.4438683!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b6de6251e757cf%3A0xd77de99e7510d5b4!2sAfa%20Art%20Design!5e1!3m2!1sro!2sro!4v1755124203085!5m2!1sro!2sro"
-            loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
+      <div class="footer-bottom">
+        <small>© <span id="y"></span> Afa Art Design — Toate drepturile rezervate.</small>
+        <div class="mini-links">
+          <a href="/politica-confidentialitate.html">Confidențialitate</a>
+          <a href="/politica-cookie.html">Cookies</a>
+          <a href="/termeni-si-conditii.html">Termeni</a>
         </div>
       </div>
-
-    </div>
-  </section>
-
-  <footer>
-    <div class="container">
-      <small class="muted">© Afa Art Design 2025, toate drepturile rezervate. • Livrare prin FAN Courier • Plăți securizate prin NETOPIA</small>
     </div>
   </footer>
 
   <script src="assets/js/cart.js"></script>
   <script src="assets/js/shop.js" type="module"></script>
+
+    <!-- === MAGNETIC HOVER (pale blue) pentru brand logo === -->
+  <script>
+    document.querySelectorAll('.magnetic-blue').forEach(btn => {
+      btn.addEventListener('mousemove', e => {
+        const rect = btn.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        btn.style.setProperty('--x', `${x}%`);
+        btn.style.setProperty('--y', `${y}%`);
+        btn.style.setProperty('--tx', `${(x - 50) / 15}px`);
+        btn.style.setProperty('--ty', `${(y - 50) / 15}px`);
+      });
+      btn.addEventListener('mouseleave', () => {
+        btn.style.removeProperty('--tx');
+        btn.style.removeProperty('--ty');
+      });
+    });
+  </script>
+
+  <!-- === STICKY HEADER === -->
   <script>
   (()=> {
     const header = document.querySelector('header');
     if (!header) return;
 
-    // Inserăm un placeholder chiar înainte de header
+    // Placeholder pt prevenit "saltul" layout-ului
     const ph = document.createElement('div');
     ph.className = 'header-placeholder';
     header.parentNode.insertBefore(ph, header);
 
     function pin(on){
       header.classList.toggle('is-pinned', on);
-      // când e fixat, placeholderul preia înălțimea ca să nu sară conținutul
       ph.style.setProperty('--headerH', on ? header.offsetHeight + 'px' : '0px');
     }
 
-    // Setări inițiale + handlers
     function onScroll(){ pin(window.scrollY > 0); }
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', ()=> { if (header.classList.contains('is-pinned')) pin(true); });
 
-    // init
     onScroll();
   })();
+  </script>
+
+  <!-- === CORE / UTIL === -->
+  <script>
+    // Current year
+    (()=>{ const y = document.getElementById('y'); if (y) y.textContent = new Date().getFullYear(); })();
+
+    // Smooth scroll
+    document.addEventListener('click', (e)=>{
+      const link = e.target.closest('a[href^="#"][data-scroll], .nav-list a[href^="#"], a.btn[href^="#galerie"]');
+      if(!link) return;
+      const target = document.querySelector(link.getAttribute('href'));
+      if(!target) return;
+      e.preventDefault();
+      target.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+
+    // Theme toggle
+    document.getElementById('themeToggle')?.addEventListener('click',()=>{
+      const isLight = document.documentElement.getAttribute('data-theme')==='light';
+      if(isLight){
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('theme','dark');
+      }else{
+        document.documentElement.setAttribute('data-theme','light');
+        localStorage.setItem('theme','light');
+      }
+    });
+  </script>
+
+  <!-- === MAGNETIC HOVER === -->
+  <script>
+    (() => {
+      const targets = Array.from(document.querySelectorAll(
+        '.btn.magnetic-green, .btn.magnetic-magenta, .btn.magnetic-blue, .card.magnetic-card'
+      ));
+      if (!targets.length) return;
+
+      let active = null, px = 0, py = 0, ticking = false;
+
+      function setVars(el, x, y) {
+        const r = el.getBoundingClientRect();
+        el.style.setProperty('--mx', ((x - r.left) / r.width * 100) + '%');
+        el.style.setProperty('--my', ((y - r.top) / r.height * 100) + '%');
+      }
+
+      function onEnter(e) { active = e.currentTarget; }
+      function onLeave() { active = null; }
+
+      targets.forEach(el => {
+        el.addEventListener('pointerenter', onEnter);
+        el.addEventListener('pointerleave', onLeave);
+      });
+
+      window.addEventListener('pointermove', (e) => {
+        if (!active) return;
+        px = e.clientX; py = e.clientY;
+        if (!ticking) {
+          requestAnimationFrame(() => { 
+            if (active) setVars(active, px, py); 
+            ticking = false; 
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+    })();
+  </script>
+
+  <!-- === STICKY HEADER FALLBACK === -->
+  <script>
+    (()=> {
+      const header = document.querySelector('header');
+      if (!header) return;
+
+      function stickyWorks(){
+        const before = header.getBoundingClientRect().top;
+        window.scrollBy(0, 2);
+        const after = header.getBoundingClientRect().top;
+        window.scrollBy(0, -2);
+        return Math.abs(after - before) < 0.5;
+      }
+
+      function enableFixed(){
+        if (header.classList.contains('is-fixed')) return;
+        header.classList.add('is-fixed');
+        document.body.style.paddingTop = header.offsetHeight + 'px';
+      }
+
+      requestAnimationFrame(() => {
+        if (!CSS.supports || !CSS.supports('position', 'sticky')) { enableFixed(); return; }
+        if (!stickyWorks()) { enableFixed(); }
+        let to = null;
+        window.addEventListener('resize', () => {
+          clearTimeout(to);
+          to = setTimeout(() => {
+            header.classList.remove('is-fixed');
+            document.body.style.paddingTop = '';
+            if (!stickyWorks()) enableFixed();
+          }, 120);
+        });
+      });
+    })();
   </script>
 
 </body>

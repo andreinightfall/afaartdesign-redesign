@@ -623,6 +623,14 @@ button,
 /* Blochează scroll-ul fundalului când modalul e deschis */
 .body--modal-open{ overflow: hidden; }
 
+/* Lock pe body fără salt la top */
+.body--modal-open{
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
 /* ===============================
    Fancy Floating Contact Button
    =============================== */

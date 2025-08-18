@@ -341,21 +341,21 @@
       <h2>Echipa</h2>
       <div class="row">
         <article class="testi card magnetic-card">
-          <img class="avatar" src="assets/img/florin.png" alt="Florin Atanasof" loading="lazy" />
+          <img class="avatar" src="/assets/img/florin.png" alt="Florin Atanasof" loading="lazy" />
           <div>
             <strong>Florin Atanasof</strong>
             <p class="muted">• Fondator</p>
           </div>
         </article>
         <article class="testi card magnetic-card">
-          <img class="avatar" src="assets/img/auras.png" alt="Aurelia Mihalache" loading="lazy" />
+          <img class="avatar" src="/assets/img/auras.png" alt="Aurelia Mihalache" loading="lazy" />
           <div>
             <strong>Aurelia Mihalache</strong>
             <p class="muted">• Co-Fondator</p>
           </div>
         </article>
         <article class="testi card magnetic-card">
-          <img class="avatar" src="assets/img/andrei.png" alt="Andrei Pintilie" loading="lazy" />
+          <img class="avatar" src="/assets/img/andrei.png" alt="Andrei Pintilie" loading="lazy" />
           <div>
             <strong>Andrei Pintilie</strong>
             <p class="muted">• Designer, Web Developer, Marketing</p>
@@ -587,7 +587,7 @@
           </style>
           <div class="magnetic-blue image-wrapper">
             <a href="/index.html">
-              <img src="assets/img/brand-logo.png" class="magnetic-blue my-image" alt="Afa Art Design" style="max-width: 160px;">
+              <img src="/assets/img/brand-logo.png" class="magnetic-blue my-image" alt="Afa Art Design" style="max-width: 160px;">
             </a>
           </div>
         </section>
@@ -638,23 +638,13 @@
   </footer>
 
   <!-- Fancy Floating Contact Button (deschide același modal) -->
-  <button id="fabContact" class="fab-contact" aria-label="Contact rapid">
+  <button id="fabContact" class="fab-contact" type="button" aria-label="Contact rapid">
     <i class="fa-regular fa-comment-dots" aria-hidden="true"></i>
     <span class="fab-text">Scrie-ne!</span>
   </button>
 
   <!-- === CORE / UTIL === -->
   <script>
-    // Scroll-to-top
-    (()=>{
-      const btn = document.getElementById('scrollTopBtn');
-      if(!btn) return;
-      const onScroll = () => btn.classList.toggle('show', window.scrollY > 200);
-      window.addEventListener('scroll', onScroll, {passive:true});
-      onScroll();
-      btn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
-    })();
-
     // Current year (safe)
     (()=>{
       const y = document.getElementById('y');

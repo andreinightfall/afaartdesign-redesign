@@ -1,38 +1,56 @@
+// modal-control.js — varianta simplă, fără salturi și fără "fixed body"
 (() => {
   const modal    = document.getElementById('bookingModal');
   const openBtn  = document.getElementById('openBooking'); // CTA bar
   const fabBtn   = document.getElementById('fabContact');  // buton flotant
   const closeBtn = document.getElementById('closeBooking');
 
-  function openModal() {
-    if (!modal) return;
+  if (!modal) return;
+
+  function openModal(e) {
+    e?.preventDefault?.();
+    e?.stopPropagation?.();
+
     modal.hidden = false;
+    // blochează DOAR scroll-ul, nu schimbăm poziția în pagină
     document.body.classList.add('body--modal-open');
+
+    // focus fără auto-scroll
     const first = modal.querySelector('input, textarea, select, button');
-    first?.focus({ preventScroll: true });
+    first?.focus?.({ preventScroll: true });
   }
-  function closeModal() {
-    if (!modal) return;
+
+  function closeModal(e) {
+    e?.preventDefault?.();
+    e?.stopPropagation?.();
+
     modal.hidden = true;
     document.body.classList.remove('body--modal-open');
+    // nu facem niciun scrollTo aici
   }
 
   // Triggers
   openBtn?.addEventListener('click', openModal);
-  fabBtn?.addEventListener('click', openModal);
+
+  // FAB: oprește orice default & propagare, apoi deschide
+  if (fabBtn) {
+    fabBtn.setAttribute('type', 'button');
+    fabBtn.addEventListener('click', openModal, { capture: true });
+  }
+
   closeBtn?.addEventListener('click', closeModal);
 
-  // Click pe overlay = închide
-  modal?.addEventListener('click', (e) => {
-    if (e.target === modal) closeModal();
+  // Click pe overlay = închide (dar doar dacă se face click pe background-ul modalei)
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal(e);
   });
 
   // ESC închide
   window.addEventListener('keydown', (e) => {
-    if (!modal?.hidden && e.key === 'Escape') closeModal();
+    if (!modal.hidden && e.key === 'Escape') closeModal(e);
   });
 
-  // Ascunde butonul flotant când CTA bar / footer intră în viewport
+  // Ascunde butonul flotant când CTA bar / footer intră în viewport (rămâne la fel)
   if ('IntersectionObserver' in window) {
     const cta = document.querySelector('.cta-bar');
     const footer = document.querySelector('footer');
@@ -43,9 +61,9 @@
     footer && io.observe(footer);
   }
 
-  // ---- Smooth rotating text + smooth width for #fabContact ----
+  // ---- Rotator text & lățime smooth pentru #fabContact (nemodificat) ----
   if (fabBtn && !fabBtn.dataset.rotatorInit) {
-    fabBtn.dataset.rotatorInit = '1'; // guard împotriva dublării
+    fabBtn.dataset.rotatorInit = '1';
 
     const fabText = fabBtn.querySelector('.fab-text');
     if (fabText) {
@@ -59,7 +77,6 @@
       ];
       let idx = 0;
 
-      // Ghost invizibil
       const ghost = fabBtn.cloneNode(true);
       ghost.id = 'fabContactGhost';
       Object.assign(ghost.style, {
@@ -80,7 +97,6 @@
         return WIDTH_CAP > 0 ? Math.min(w, WIDTH_CAP) : w;
       };
 
-      // Dimensiune inițială
       const setWidthTo = (text) => {
         const w = measureWidthFor(text);
         fabBtn.style.width = w + 'px';
@@ -106,5 +122,3 @@
     }
   }
 })();
-
-
