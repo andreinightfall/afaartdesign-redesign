@@ -3,132 +3,217 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Politica cookie | Afa Art Design</title>
+  <title>Politica de Cookie-uri • AFA ART DESIGN</title>
   <meta name="robots" content="noindex" />
+  <meta name="description" content="Politica de cookie-uri a AFA ART DESIGN: ce sunt cookie-urile, ce folosim, scopuri, cum îți administrezi consimțământul și preferințele." />
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/main.css" />
+
   <style>
-    :root {
-      --ink: #0f172a;
-      --muted: #475569;
-      --brand: #e879f9;   /* magenta-ish */
-      --brand-2: #60a5fa; /* light blue */
-      --bg: #0b1020;
-      --card: rgba(255,255,255,.04);
-      --border: rgba(255,255,255,.12);
+    :root{
+      --ink:#0f172a; --muted:#94a3b8;
+      --brand:#e879f9; --brand-2:#60a5fa;
+      --bg:#0b1020; --card:rgba(255,255,255,.04); --border:rgba(255,255,255,.12)
     }
-    body {
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-      line-height: 1.7;
-      color: #e5e7eb;
-      background: radial-gradient(1000px 600px at 10% -10%, rgba(232,121,249,.08), transparent 60%),
-                  radial-gradient(900px 500px at 90% 0%, rgba(96,165,250,.08), transparent 60%),
-                  #0b1020;
-      padding: 32px 16px 80px;
+    html,body{background:#0b1020}
+    body{
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      line-height:1.7; color:#e5e7eb;
+      background:
+        radial-gradient(1000px 600px at 10% -10%, rgba(232,121,249,.08), transparent 60%),
+        radial-gradient(900px 500px at 90% 0%, rgba(96,165,250,.08), transparent 60%),
+        var(--bg);
+      padding:32px 16px 80px;
     }
-    .wrap {
-      max-width: 900px;
-      margin: 0 auto;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 28px 24px;
-      box-shadow: 0 10px 30px rgba(0,0,0,.25);
-      backdrop-filter: blur(6px);
+    .wrap{
+      max-width:980px; margin:0 auto;
+      background:var(--card); border:1px solid var(--border);
+      border-radius:20px; padding:28px 24px;
+      box-shadow:0 10px 30px rgba(0,0,0,.25); backdrop-filter:blur(6px)
     }
-    h1 {
-      font-size: clamp(28px, 4vw, 42px);
-      margin: 0 0 8px;
-      line-height: 1.2;
+    header h1{font-size:clamp(28px,4vw,42px); margin:0 0 6px; line-height:1.2}
+    .sub{color:#9fb3c8; font-size:14px; margin-bottom:18px}
+    .meta{display:flex; gap:10px; flex-wrap:wrap; font-size:13px; color:#cbd5e1}
+    .badge{border:1px solid var(--border); border-radius:999px; padding:4px 10px; background:rgba(255,255,255,.04)}
+    .idcard{
+      margin:18px 0 8px; padding:16px; border-radius:14px;
+      background:linear-gradient(180deg, rgba(96,165,250,.08), rgba(232,121,249,.06));
+      border:1px solid rgba(148,163,184,.35)
     }
-    .sub {
-      color: #94a3b8;
-      font-size: 14px;
-      margin-bottom: 24px;
+    .idgrid{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+    .iditem{display:flex; gap:8px}
+    .idlabel{color:#a5b4fc; min-width:190px}
+    @media (max-width:680px){ .idgrid{grid-template-columns:1fr} .idlabel{min-width:140px} }
+
+    h2{font-size:clamp(20px,3vw,26px); margin-top:26px; color:#f1f5f9}
+    h3{font-size:18px; margin-top:16px; color:#f8fafc}
+    p,li{color:#dbeafe}
+    ul{padding-left:1.1rem}
+    a{color:#93c5fd; text-decoration:none; border-bottom:1px dashed rgba(147,197,253,.5)}
+    a:hover{opacity:.9}
+    .toc{margin:14px 0 8px; padding:12px; border:1px dashed var(--border); border-radius:12px; background:rgba(255,255,255,.03)}
+    .toc a{border-bottom:none}
+    .note{padding:10px 12px; background:rgba(96,165,250,.08); border:1px dashed rgba(148,163,184,.4); border-radius:12px; font-size:14px; color:#bfdbfe; margin:12px 0 0}
+    table{width:100%; border-collapse:collapse; margin:10px 0; font-size:14px}
+    th,td{border:1px solid var(--border); padding:8px 10px; text-align:left}
+    th{color:#eaf2ff; background:rgba(255,255,255,.04)}
+    footer{
+      margin-top:28px; font-size:14px; color:#94a3b8;
+      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
+      border-top:1px solid var(--border); padding-top:14px
     }
-    h2 {
-      font-size: clamp(20px, 3vw, 26px);
-      margin-top: 26px;
-      color: #f1f5f9;
-    }
-    h3 {
-      font-size: 18px;
-      margin-top: 18px;
-      color: #f8fafc;
-    }
-    p, li {
-      color: #dbeafe;
-    }
-    a {
-      color: #93c5fd;
-      text-decoration: none;
-      border-bottom: 1px dashed rgba(147,197,253,.5);
-    }
-    a:hover {
-      opacity:.9;
-    }
-    .note {
-      padding: 10px 12px;
-      background: rgba(96,165,250,.08);
-      border: 1px dashed rgba(148,163,184,.4);
-      border-radius: 12px;
-      font-size: 14px;
-      color:#bfdbfe;
-      margin: 12px 0 0;
-    }
-    ul { padding-left: 1.1rem; }
-    code { background: rgba(255,255,255,.06); padding: 1px 6px; border-radius: 6px; }
-    footer {
-      margin-top: 28px; font-size: 14px; color:#94a3b8;
-      display:flex; justify-content: space-between; gap:10px; flex-wrap:wrap;
-      border-top:1px solid var(--border); padding-top:14px;
+    @media print{
+      body{background:#fff; color:#111; padding:0}
+      .wrap{box-shadow:none; border:none; background:#fff}
+      a{color:#111; border-bottom:1px solid #111}
+      .idcard{background:#fff; border:1px solid #ddd}
+      th,td{border:1px solid #ddd}
     }
   </style>
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebPage",
+    "name":"Politica de Cookie-uri",
+    "about":{
+      "@type":"Organization",
+      "name":"AFA ART DESIGN",
+      "email":"afaartdesign@gmail.com",
+      "telephone":"+40790323945",
+      "identifier":[
+        {"@type":"PropertyValue","name":"CUI","value":"44832473"},
+        {"@type":"PropertyValue","name":"Nr. înmatriculare","value":"J17/1437/2021"},
+        {"@type":"PropertyValue","name":"EUID","value":"ROONRC.J17/1437/2021"},
+        {"@type":"PropertyValue","name":"Data înființării","value":"2021-09-01"}
+      ]
+    }
+  }
+  </script>
 </head>
 <body>
   <div class="wrap">
-    <h1>Politica cookie</h1>
-    <div class="sub">Ultima actualizare: 14 August 2025</div>
-    
-<h2>1. Ce sunt cookie-urile?</h2>
-<p>Cookie-urile sunt fișiere text mici stocate pe dispozitiv atunci când vizitați un site. Ele rețin preferințe și ajută site-ul să funcționeze.</p>
+    <header>
+      <h1>Politica de Cookie-uri</h1>
+      <div class="sub">Ultima actualizare: 19 August 2025</div>
+      <div class="meta">
+        <span class="badge">AFA ART DESIGN</span>
+        <span class="badge"><a href="index.html">Înapoi la pagina principală</a></span>
+      </div>
 
-<h2>2. Cum folosim cookie-urile</h2>
-<ul>
-  <li>Necesare – pentru funcționarea site-ului (ex.: sesiune, preferințe).</li>
-  <li>Analitice – pentru a înțelege cum este utilizat site-ul.</li>
-  <li>Marketing – pentru personalizarea conținutului și reclamelor (dacă aplicați).</li>
-</ul>
+      <section class="idcard" aria-labelledby="idfirm-title">
+        <h2 id="idfirm-title" style="margin:0 0 10px">Date de identificare</h2>
+        <div class="idgrid">
+          <div class="iditem"><strong class="idlabel">Marcă / denumire comercială:</strong><span>AFA ART DESIGN</span></div>
+          <div class="iditem"><strong class="idlabel">Denumire legală:</strong><span>NEW AFA ART DESIGN S.R.L.</span></div>
+          <div class="iditem"><strong class="idlabel">CUI:</strong><span>44832473</span></div>
+          <div class="iditem"><strong class="idlabel">Nr. înmatriculare:</strong><span>J17/1437/2021</span></div>
+          <div class="iditem"><strong class="idlabel">EUID:</strong><span>ROONRC.J17/1437/2021</span></div>
+          <div class="iditem"><strong class="idlabel">E-mail:</strong><span><a href="mailto:afaartdesign@gmail.com">afaartdesign@gmail.com</a></span></div>
+          <div class="iditem"><strong class="idlabel">Telefon:</strong><span><a href="tel:+40790323945">+40&nbsp;790&nbsp;323&nbsp;945</a></span></div>
+        </div>
+        <p class="note">Această pagină explică ce cookie-uri folosim, de ce și cum îți poți gestiona preferințele.</p>
+      </section>
 
-<h2>3. Temei legal</h2>
-<p>Pentru cookie-urile necesare ne bazăm pe <em>interesul legitim</em>. Pentru analitice/marketing cerem <em>consimțământ</em> prin banner.</p>
+      <nav class="toc" aria-label="Cuprins">
+        <strong>Cuprins:</strong>
+        <ol>
+          <li><a href="#ce-sunt">Ce sunt cookie-urile?</a></li>
+          <li><a href="#de-ce">De ce folosim cookie-uri</a></li>
+          <li><a href="#tipuri">Tipuri de cookie-uri folosite</a></li>
+          <li><a href="#gestionare">Cum îți gestionezi consimțământul</a></li>
+          <li><a href="#terti">Cookie-uri terțe</a></li>
+          <li><a href="#durata">Durata de stocare</a></li>
+          <li><a href="#modificari">Modificări ale politicii</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ol>
+      </nav>
+    </header>
 
-<h2>4. Gestionarea consimțământului</h2>
-<p>Puteți modifica preferințele din bannerul de cookie-uri sau din setările browserului. De exemplu:</p>
-<ul>
-  <li>Chrome: <a href="https://support.google.com/chrome/answer/95647">Setări cookie-uri</a></li>
-  <li>Firefox: <a href="https://support.mozilla.org/ro/kb/cookies-informatii-site-uri">Setări cookie-uri</a></li>
-  <li>Safari: <a href="https://support.apple.com/ro-ro/guide/safari/sfri11471/mac">Setări cookie-uri</a></li>
-</ul>
+    <main>
+      <section id="ce-sunt">
+        <h2>1. Ce sunt cookie-urile?</h2>
+        <p>Cookie-urile sunt fișiere text mici plasate pe dispozitivul tău de site-urile web pe care le vizitezi. Ele sunt utilizate pe scară largă pentru a face site-urile să funcționeze corect, pentru a le îmbunătăți performanța și pentru a furniza informații proprietarilor site-ului.</p>
+      </section>
 
-<h2>5. Lista de cookie-uri (exemplu)</h2>
-<p><em>Actualizați în funcție de instrumentele reale folosite.</em></p>
-<ul>
-  <li><code>_ga</code> (Google Analytics) – analitic, 2 ani.</li>
-  <li><code>_ga_*</code> (Google Analytics) – analitic, 2 ani.</li>
-  <li><code>cookie_consent</code> – reține preferințe consimțământ, 12 luni.</li>
-</ul>
+      <section id="de-ce">
+        <h2>2. De ce folosim cookie-uri</h2>
+        <ul>
+          <li>asigurarea funcționării și securității site-ului;</li>
+          <li>memorarea preferințelor (ex.: limbă, coș de cumpărături);</li>
+          <li>analiza utilizării site-ului pentru îmbunătățiri;</li>
+          <li>personalizarea conținutului/experienței (acolo unde este cazul).</li>
+        </ul>
+      </section>
 
-<h2>6. Terți</h2>
-<p>Fișierele cookie ale terților sunt gestionate de aceștia; vă rugăm să consultați politicile lor.</p>
+      <section id="tipuri">
+        <h2>3. Tipuri de cookie-uri folosite</h2>
+        <table>
+          <thead>
+            <tr><th>Tip</th><th>Scop</th><th>Exemple</th><th>Bază legală</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Necesare</td>
+              <td>Funcționarea site-ului, securitate, sesiune.</td>
+              <td>session_id, cart_id</td>
+              <td>Interes legitim (art. 6(1)(f) GDPR)</td>
+            </tr>
+            <tr>
+              <td>Preferințe</td>
+              <td>Memorarea alegerilor (limbă, afișare).</td>
+              <td>lang, theme</td>
+              <td>Consimțământ (art. 6(1)(a) GDPR)</td>
+            </tr>
+            <tr>
+              <td>Statistice</td>
+              <td>Măsurarea traficului și a interacțiunilor.</td>
+              <td>_ga*, _clck (exemple)</td>
+              <td>Consimțământ (art. 6(1)(a) GDPR)</td>
+            </tr>
+            <tr>
+              <td>Marketing</td>
+              <td>Personalizarea reclamelor / remarketing.</td>
+              <td>_fbp, _gcl_au (exemple)</td>
+              <td>Consimțământ (art. 6(1)(a) GDPR)</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="note">Notă: dacă nu folosim în prezent anumite servicii (ex. remarketing), aceste cookie-uri nu vor fi setate. Lista poate fi actualizată când integrăm servicii noi.</p>
+      </section>
 
-<h2>7. Contact</h2>
-<p>Pentru întrebări, scrieți-ne la <a href="mailto:afaartdesign@gmail.com">afaartdesign@gmail.com</a>.</p>
+      <section id="gestionare">
+        <h2>4. Cum îți gestionezi consimțământul</h2>
+        <p>Poți accepta sau respinge categoriile nenecesare din bannerul de consimțământ (acolo unde este prezent). De asemenea, poți șterge sau bloca cookie-urile din setările browserului tău. Atenție: blocarea cookie-urilor necesare poate afecta funcționarea site-ului.</p>
+      </section>
+
+      <section id="terti">
+        <h2>5. Cookie-uri terțe</h2>
+        <p>Unele cookie-uri pot fi setate de terți (ex.: servicii de analiză sau integrarea platformelor sociale). Acestea se supun politicilor terților respectivi. Vom indica în această pagină dacă folosim astfel de servicii și tipurile de cookie-uri asociate.</p>
+      </section>
+
+      <section id="durata">
+        <h2>6. Durata de stocare</h2>
+        <p>Durata poate varia de la sesiune (se șterg la închiderea browserului) până la câteva luni sau ani, în funcție de scop. Poți vedea sau șterge cookie-urile direct din browser.</p>
+      </section>
+
+      <section id="modificari">
+        <h2>7. Modificări ale politicii</h2>
+        <p>Putem actualiza această Politică de cookie-uri pentru a reflecta schimbări ale practicilor sau cerințelor legale. Data ultimei actualizări este indicată la începutul paginii.</p>
+      </section>
+
+      <section id="contact">
+        <h2>8. Contact</h2>
+        <p>Pentru întrebări, scrie-ne la <a href="mailto:afaartdesign@gmail.com">afaartdesign@gmail.com</a> sau sună la <a href="tel:+40790323945">+40&nbsp;790&nbsp;323&nbsp;945</a>.</p>
+      </section>
+    </main>
 
     <footer>
-      <span>&copy; 2025 Afa Art Design. Toate drepturile rezervate.</span>
+      <span>&copy; 2025 AFA ART DESIGN - Toate drepturile rezervate.</span>
       <span><a href="index.html">Înapoi la pagina principală</a></span>
     </footer>
   </div>

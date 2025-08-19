@@ -138,12 +138,12 @@
 <body>
   <header>
     <nav class="container nav">
-      <a class="brand" href="index.html"><img src="assets/img/brand-logo.png" alt="Afa Art Design"></a>
+      <a class="brand" href="../index.html"><img src="assets/img/brand-logo.png" alt="Afa Art Design"></a>
       <div class="nav-list">
-        <a href="index.html#promotii">Promoții</a>
-        <a href="shop.html" aria-current="page">Magazin</a>
-        <a href="index.html#galerie">Galerie</a>
-        <a href="index.html#contact">Contact</a>
+        <a href="../index.html#promotii">Promoții</a>
+        <a href="../shop.html" aria-current="page">Magazin</a>
+        <a href="../index.html#galerie">Galerie</a>
+        <a href="../index.html#contact">Contact</a>
       </div>
       <div class="nav-cta">
         <a class="btn ghost magnetic-green" href="https://wa.me/+40790323945" target="_blank" rel="noopener">
@@ -253,8 +253,8 @@
             }
           </style>
           <div class="magnetic-blue image-wrapper">
-            <a href="/index.html">
-              <img src="/assets/img/brand-logo.png" class="magnetic-blue my-image" alt="Afa Art Design" style="max-width: 160px;">
+            <a href="../index.html">
+              <img src="assets/img/brand-logo.png" class="magnetic-blue my-image" alt="Afa Art Design" style="max-width: 160px;">
             </a>
           </div>
         </section>
@@ -263,8 +263,8 @@
         <section class="fcol">
           <h4 class="ftitle">Link-uri utile</h4>
           <ul class="flist">
-            <li><a href="/index.html"><i class="fa-solid fa-house"></i> Acasă</a></li>
-            <li><a href="/shop-wip.html"><i class="fa-solid fa-store"></i> Magazin Online</a></li>
+            <li><a href="../index.html"><i class="fa-solid fa-house"></i> Acasă</a></li>
+            <li><a href="../shop-wip.html"><i class="fa-solid fa-store"></i> Magazin Online</a></li>
             <li><a href="/#contact"><i class="fa-solid fa-envelope-open-text"></i> Contact</a></li>
           </ul>
         </section>
@@ -363,18 +363,6 @@
       if(!target) return;
       e.preventDefault();
       target.scrollIntoView({behavior:'smooth', block:'start'});
-    });
-
-    // Theme toggle
-    document.getElementById('themeToggle')?.addEventListener('click',()=>{
-      const isLight = document.documentElement.getAttribute('data-theme')==='light';
-      if(isLight){
-        document.documentElement.removeAttribute('data-theme');
-        localStorage.setItem('theme','dark');
-      }else{
-        document.documentElement.setAttribute('data-theme','light');
-        localStorage.setItem('theme','light');
-      }
     });
   </script>
 

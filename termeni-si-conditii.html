@@ -3,130 +3,193 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Termeni & Condiții | Afa Art Design</title>
+  <title>Termeni & Condiții • AFA ART DESIGN</title>
   <meta name="robots" content="noindex" />
+  <meta name="description" content="Termeni & Condiții pentru utilizarea site-ului NEW AFA ART DESIGN S.R.L. — servicii și produse pentru finisaje interioare." />
+
+  <!-- Fonts & CSS -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/main.css" />
+
+
   <style>
-    :root {
-      --ink: #0f172a;
-      --muted: #475569;
-      --brand: #e879f9;   /* magenta-ish */
-      --brand-2: #60a5fa; /* light blue */
-      --bg: #0b1020;
-      --card: rgba(255,255,255,.04);
-      --border: rgba(255,255,255,.12);
+    :root{
+      --ink:#0f172a; --muted:#94a3b8;
+      --brand:#e879f9; --brand-2:#60a5fa;
+      --bg:#0b1020; --card:rgba(255,255,255,.04); --border:rgba(255,255,255,.12)
     }
-    body {
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-      line-height: 1.7;
-      color: #e5e7eb;
-      background: radial-gradient(1000px 600px at 10% -10%, rgba(232,121,249,.08), transparent 60%),
-                  radial-gradient(900px 500px at 90% 0%, rgba(96,165,250,.08), transparent 60%),
-                  #0b1020;
-      padding: 32px 16px 80px;
+    html,body{background:#0b1020}
+    body{
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      line-height:1.7; color:#e5e7eb;
+      background:
+        radial-gradient(1000px 600px at 10% -10%, rgba(232,121,249,.08), transparent 60%),
+        radial-gradient(900px 500px at 90% 0%, rgba(96,165,250,.08), transparent 60%),
+        var(--bg);
+      padding:32px 16px 80px;
     }
-    .wrap {
-      max-width: 900px;
-      margin: 0 auto;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 28px 24px;
-      box-shadow: 0 10px 30px rgba(0,0,0,.25);
-      backdrop-filter: blur(6px);
+    .wrap{
+      max-width:980px; margin:0 auto;
+      background:var(--card); border:1px solid var(--border);
+      border-radius:20px; padding:28px 24px;
+      box-shadow:0 10px 30px rgba(0,0,0,.25); backdrop-filter:blur(6px)
     }
-    h1 {
-      font-size: clamp(28px, 4vw, 42px);
-      margin: 0 0 8px;
-      line-height: 1.2;
+    header h1{font-size:clamp(28px,4vw,42px); margin:0 0 6px; line-height:1.2}
+    .sub{color:#9fb3c8; font-size:14px; margin-bottom:18px}
+    .meta{display:flex; gap:10px; flex-wrap:wrap; font-size:13px; color:#cbd5e1}
+    .badge{border:1px solid var(--border); border-radius:999px; padding:4px 10px; background:rgba(255,255,255,.04)}
+    .idcard{
+      margin:18px 0 8px; padding:16px; border-radius:14px;
+      background:linear-gradient(180deg, rgba(96,165,250,.08), rgba(232,121,249,.06));
+      border:1px solid rgba(148,163,184,.35)
     }
-    .sub {
-      color: #94a3b8;
-      font-size: 14px;
-      margin-bottom: 24px;
+    .idgrid{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+    .iditem{display:flex; gap:8px}
+    .idlabel{color:#a5b4fc; min-width:160px}
+    @media (max-width:680px){ .idgrid{grid-template-columns:1fr} .idlabel{min-width:120px} }
+
+    h2{font-size:clamp(20px,3vw,26px); margin-top:26px; color:#f1f5f9}
+    h3{font-size:18px; margin-top:16px; color:#f8fafc}
+    p,li{color:#dbeafe}
+    ul{padding-left:1.1rem}
+    a{color:#93c5fd; text-decoration:none; border-bottom:1px dashed rgba(147,197,253,.5)}
+    a:hover{opacity:.9}
+    .note{padding:10px 12px; background:rgba(96,165,250,.08);
+      border:1px dashed rgba(148,163,184,.4); border-radius:12px; font-size:14px; color:#bfdbfe; margin:12px 0 0}
+    .toc{margin:14px 0 8px; padding:12px; border:1px dashed var(--border); border-radius:12px; background:rgba(255,255,255,.03)}
+    .toc a{border-bottom:none}
+    footer{
+      margin-top:28px; font-size:14px; color:#94a3b8;
+      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
+      border-top:1px solid var(--border); padding-top:14px
     }
-    h2 {
-      font-size: clamp(20px, 3vw, 26px);
-      margin-top: 26px;
-      color: #f1f5f9;
-    }
-    h3 {
-      font-size: 18px;
-      margin-top: 18px;
-      color: #f8fafc;
-    }
-    p, li {
-      color: #dbeafe;
-    }
-    a {
-      color: #93c5fd;
-      text-decoration: none;
-      border-bottom: 1px dashed rgba(147,197,253,.5);
-    }
-    a:hover {
-      opacity:.9;
-    }
-    .note {
-      padding: 10px 12px;
-      background: rgba(96,165,250,.08);
-      border: 1px dashed rgba(148,163,184,.4);
-      border-radius: 12px;
-      font-size: 14px;
-      color:#bfdbfe;
-      margin: 12px 0 0;
-    }
-    ul { padding-left: 1.1rem; }
-    code { background: rgba(255,255,255,.06); padding: 1px 6px; border-radius: 6px; }
-    footer {
-      margin-top: 28px; font-size: 14px; color:#94a3b8;
-      display:flex; justify-content: space-between; gap:10px; flex-wrap:wrap;
-      border-top:1px solid var(--border); padding-top:14px;
+    /* Print: curat și compact */
+    @media print{
+      body{background:#fff; color:#111; padding:0}
+      .wrap{box-shadow:none; border:none; background:#fff}
+      a{color:#111; border-bottom:1px solid #111}
+      .idcard{background:#fff; border:1px solid #ddd}
     }
   </style>
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"NEW AFA ART DESIGN S.R.L.",
+    "email":"afaartdesign@gmail.com",
+    "telephone":"+40790323945",
+    "url":"https://afaartdesign.ro",
+    "identifier":[
+      {"@type":"PropertyValue","name":"CUI","value":"44832473"},
+      {"@type":"PropertyValue","name":"Nr. înmatriculare","value":"J17/1437/2021"},
+      {"@type":"PropertyValue","name":"EUID","value":"ROONRC.J17/1437/2021"},
+      {"@type":"PropertyValue","name":"Data înființării","value":"2021-09-01"}
+    ]
+  }
+  </script>
 </head>
 <body>
   <div class="wrap">
-    <h1>Termeni & Condiții</h1>
-    <div class="sub">Ultima actualizare: 14 August 2025</div>
-    
-<h2>1. Acceptarea termenilor</h2>
-<p>Accesând și utilizând site-ul nostru, acceptați acești Termeni & Condiții. Dacă nu sunteți de acord, vă rugăm să nu utilizați site-ul.</p>
+    <header>
+      <h1>Termeni &amp; Condiții</h1>
+      <div class="sub">Ultima actualizare: 19 August 2025</div>
 
-<h2>2. Serviciile noastre</h2>
-<p>Oferim consultanță și produse pentru finisaje interioare (de ex.: vopsele decorative, parchet, plinte). Detaliile și disponibilitatea pot varia.</p>
+      <div class="meta">
+        <span class="badge">Document revizia v1.3</span>
+        <span class="badge"><a href="index.html">Înapoi la pagina principală</a></span>
+      </div>
 
-<h2>3. Drepturi de proprietate intelectuală</h2>
-<p>Conținutul (texte, imagini, logo-uri) aparține Afa Art Design sau partenerilor și este protejat de lege. Nu este permisă copierea sau distribuirea fără acord.</p>
+      <section class="idcard" aria-labelledby="idfirm-title">
+        <h2 id="idfirm-title" style="margin:0 0 10px">Date de identificare</h2>
+        <div class="idgrid">
+          <div class="iditem"><strong class="idlabel">Denumire:</strong><span>NEW AFA ART DESIGN S.R.L.</span></div>
+          <div class="iditem"><strong class="idlabel">CUI:</strong><span>44832473</span></div>
+          <div class="iditem"><strong class="idlabel">Nr. înmatriculare:</strong><span>J17/1437/2021</span></div>
+          <div class="iditem"><strong class="idlabel">EUID:</strong><span>ROONRC.J17/1437/2021</span></div>
+          <div class="iditem"><strong class="idlabel">Data înființării:</strong><span>01-09-2021</span></div>
+          <div class="iditem"><strong class="idlabel">E-mail:</strong><span><a href="mailto:afaartdesign@gmail.com">afaartdesign@gmail.com</a></span></div>
+          <div class="iditem"><strong class="idlabel">Telefon:</strong><span><a href="tel:+40790323945">+40&nbsp;790&nbsp;323&nbsp;945</a></span></div>
+        </div>
+        <p class="note">Aceste date pot fi folosite pe contracte, facturi și în secțiunea „Contact”.</p>
+      </section>
 
-<h2>4. Utilizare acceptabilă</h2>
-<ul>
-  <li>Nu folosiți site-ul într-un mod care încalcă legea sau drepturile altora.</li>
-  <li>Nu încercați să accesați neautorizat sistemele noastre.</li>
-</ul>
+      <nav class="toc" aria-label="Cuprins">
+        <strong>Cuprins:</strong>
+        <ol>
+          <li><a href="#acceptare">Acceptarea termenilor</a></li>
+          <li><a href="#servicii">Serviciile noastre</a></li>
+          <li><a href="#ip">Proprietate intelectuală</a></li>
+          <li><a href="#utilizare">Utilizare acceptabilă</a></li>
+          <li><a href="#comenzi">Comenzi și plăți</a></li>
+          <li><a href="#garantii">Garanții &amp; responsabilitate</a></li>
+          <li><a href="#terti">Linkuri către terți</a></li>
+          <li><a href="#lege">Legea aplicabilă</a></li>
+          <li><a href="#modificari">Modificări</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ol>
+      </nav>
+    </header>
 
-<h2>5. Comenzi și plăți</h2>
-<p>Dacă site-ul permite comenzi online, acestea devin ferme după confirmare explicită. Prețurile pot fi modificate. Facturarea respectă legislația în vigoare.</p>
+    <main>
+      <section id="acceptare">
+        <h2>1. Acceptarea termenilor</h2>
+        <p>Accesând și utilizând site-ul nostru, acceptați acești Termeni &amp; Condiții. Dacă nu sunteți de acord, vă rugăm să nu utilizați site-ul.</p>
+      </section>
 
-<h2>6. Garanții și responsabilitate</h2>
-<p>Site-ul este furnizat „ca atare”. Depunem eforturi pentru acuratețe, dar nu garantăm absența erorilor. În măsura permisă de lege, răspunderea noastră este limitată la suma plătită pentru serviciul/produsul relevant.</p>
+      <section id="servicii">
+        <h2>2. Serviciile noastre</h2>
+        <p>Oferim consultanță și produse pentru finisaje interioare (de ex.: vopsele decorative, parchet, plinte, riflaje). Detaliile, stocurile și disponibilitatea pot varia.</p>
+      </section>
 
-<h2>7. Linkuri către terți</h2>
-<p>Nu suntem responsabili pentru conținutul sau practicile site-urilor terțe către care facem trimitere.</p>
+      <section id="ip">
+        <h2>3. Drepturi de proprietate intelectuală</h2>
+        <p>Conținutul (texte, imagini, logo-uri) aparține NEW AFA ART DESIGN S.R.L. sau partenerilor și este protejat de lege. Nu este permisă copierea, republicarea sau distribuirea fără acord scris.</p>
+      </section>
 
-<h2>8. Legea aplicabilă</h2>
-<p>Prezentul document este guvernat de legea română. Litigiile vor fi soluționate de instanțele competente din România.</p>
+      <section id="utilizare">
+        <h2>4. Utilizare acceptabilă</h2>
+        <ul>
+          <li>Nu folosiți site-ul într-un mod care încalcă legea sau drepturile altora.</li>
+          <li>Nu încercați să accesați neautorizat sistemele noastre sau să afectați funcționarea site-ului.</li>
+        </ul>
+      </section>
 
-<h2>9. Modificări</h2>
-<p>Putem actualiza periodic acești Termeni. Continuarea utilizării site-ului reprezintă acceptarea modificărilor.</p>
+      <section id="comenzi">
+        <h2>5. Comenzi și plăți</h2>
+        <p>Dacă site-ul permite comenzi online, acestea devin ferme după confirmare explicită (e-mail/SMS). Prețurile pot fi modificate fără notificare prealabilă. Facturarea se realizează conform legislației în vigoare.</p>
+      </section>
 
-<h2>10. Contact</h2>
-<p>Întrebări? <a href="mailto:afaartdesign@gmail.com">afaartdesign@gmail.com</a> sau telefon <a href="tel:+40790323945">0790 323 945</a>.</p>
+      <section id="garantii">
+        <h2>6. Garanții și responsabilitate</h2>
+        <p>Site-ul este furnizat „ca atare”. Depunem eforturi pentru acuratețe, însă nu garantăm absența erorilor sau a întreruperilor. În măsura permisă de lege, răspunderea noastră este limitată la suma plătită pentru serviciul/produsul relevant.</p>
+      </section>
+
+      <section id="terti">
+        <h2>7. Linkuri către terți</h2>
+        <p>Nu suntem responsabili pentru conținutul sau practicile site-urilor terțe către care facem trimitere.</p>
+      </section>
+
+      <section id="lege">
+        <h2>8. Legea aplicabilă</h2>
+        <p>Prezentul document este guvernat de legea română. Litigiile vor fi soluționate de instanțele competente din România.</p>
+      </section>
+
+      <section id="modificari">
+        <h2>9. Modificări</h2>
+        <p>Putem actualiza periodic acești Termeni. Continuarea utilizării site-ului după publicare reprezintă acceptarea modificărilor.</p>
+      </section>
+
+      <section id="contact">
+        <h2>10. Contact</h2>
+        <p>Pentru întrebări legate de Termeni &amp; Condiții, ne puteți scrie la <a href="mailto:afaartdesign@gmail.com">afaartdesign@gmail.com</a> sau suna la <a href="tel:+40790323945">+40&nbsp;790&nbsp;323&nbsp;945</a>.</p>
+      </section>
+    </main>
 
     <footer>
-      <span>&copy; 2025 Afa Art Design. Toate drepturile rezervate.</span>
+      <span>&copy; 2025 AFA ART DESIGN - Toate drepturile rezervate.</span>
       <span><a href="index.html">Înapoi la pagina principală</a></span>
     </footer>
   </div>

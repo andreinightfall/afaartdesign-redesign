@@ -1,0 +1,8 @@
+# /public_html/shop/.htaccess
+RewriteEngine On
+
+# Let the gate itself be reachable
+RewriteRule ^gate\.php$ - [L]
+
+# Route EVERYTHING in /shop to gate.php (files & folders)
+RewriteRule ^(.*)$ gate.php [QSA,L]
