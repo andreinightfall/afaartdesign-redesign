@@ -29,6 +29,125 @@
     .paymethods input{ width:auto; }
     .muted{ opacity:.8; font-size:.9rem; }
   </style>
+  <style>
+    /* ===== Base tweaks ===== */
+    body.checkout-page{
+      margin:0;
+      -webkit-text-size-adjust:100%;
+      background: var(--bg, #0b0c10);
+      color: var(--fg, #fff);
+    }
+
+    .checkout-page h1{ margin: 0 0 12px; }
+
+    /* Keep your desktop layout; just refine spacing a bit */
+    .wrap{
+      max-width: 1100px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 20px;
+      padding-inline: 8px;
+    }
+    .card{
+      background: var(--panel);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 14px;
+      padding: 16px;
+    }
+    .grid{ display:grid; gap:12px; grid-template-columns: 1fr 1fr; }
+    .grid-1{ grid-template-columns: 1fr; }
+
+    input, select, textarea{
+      width: 100%;
+      min-height: 44px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      color: var(--text, #fff);
+    }
+    label{ font-weight:700; font-size:.95rem; display:block; margin-bottom:6px; }
+
+    .btn{
+      cursor:pointer;
+      padding:.8rem 1rem;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+    }
+
+    .paymethods{ display:flex; gap:12px; flex-wrap:wrap; }
+    .paymethods label{
+      display:flex; gap:8px; align-items:center;
+      padding:.55rem .8rem; border:1px solid rgba(255,255,255,.12);
+      border-radius:10px; cursor:pointer; background: rgba(255,255,255,.03);
+    }
+    .paymethods input{ width:auto; }
+
+    /* Table keeps layout on desktop */
+    table{ width:100%; border-collapse:collapse; }
+    th, td{ padding:10px; border-bottom:1px solid rgba(255,255,255,.08); }
+    tfoot td{ font-weight:600; }
+
+    /* ===== Mobile / Tablet ===== */
+    @media (max-width: 900px){
+      /* 1 column layout, cart first */
+      .wrap{
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding-inline: 12px;
+      }
+      .wrap > aside{ order:-1; } /* show cart above the form */
+
+      .card{ padding: 14px; }
+      .grid{ grid-template-columns: 1fr; } /* all fields single-column */
+      .actions{ display:flex; gap:10px; flex-wrap:wrap; }
+
+      /* Full-width controls */
+      .btn{ width:100%; }
+      .paymethods{ gap:8px; }
+      .paymethods label{ width:100%; justify-content:flex-start; }
+      .paymethods input[type="radio"]{ transform: scale(1.1); }
+
+      /* Make the cart table easy to use on phones */
+      table{
+        display:block;
+        overflow-x:auto;
+        white-space:nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      /* Sticky pay button inside the form for easier checkout */
+      #btnPay{
+        position: relative;
+        bottom: 0;
+        z-index: 2;
+        margin-top: 16px;
+        box-shadow: 0 8px 18px rgba(0,0,0,.35);
+        background: color-mix(in oklab, var(--accent, #3aa6ff), white 10%);
+        color: #fff;
+        border-color: color-mix(in oklab, var(--accent, #3aa6ff), black 20%);
+      }
+
+      /* Slightly larger form text on small screens */
+      body.checkout-page{ font-size: 16px; }
+    }
+
+    /* Very small phones */
+    @media (max-width: 360px){
+      .card{ padding: 12px; }
+      th, td{ padding: 8px; }
+      #btnPay{ padding: .9rem 1rem; }
+    }
+
+    /* Focus visibility */
+    input:focus, select:focus, textarea:focus, .btn:focus-visible{
+      outline: 2px solid color-mix(in oklab, var(--accent, #3aa6ff), white 10%);
+      outline-offset: 2px;
+    }
+  </style>
+
 </head>
 <body class="checkout-page">
   <h1>Finalizare comandă</h1>

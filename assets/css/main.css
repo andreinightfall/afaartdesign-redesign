@@ -4,9 +4,13 @@ body {
   transition: background-color .3s ease, color .3s ease;
 }
 
+html {
+  font-size: 90%;
+}
+
 /* ===== Design system ===== */
 :root{
-  --bg:#0e0f12; --panel:#16181d; --panel-2:#1e222a; --text:#e6e6e6; --muted:#ffffff;
+  --bg:#0a0c12; --panel:#16181d; --panel-2:#1e222a; --text:#e6e6e6; --muted:#ffffff;
   --brand:#3aa0ff; --brand-2:#9b7cff; --ok:#27c37b; --warn:#ef4444;
   --ring: 0 0 0 2px color-mix(in oklab, var(--brand), transparent 65%);
   --radius:16px; --shadow:0 10px 30px rgba(0,0,0,.35);
@@ -295,77 +299,99 @@ h1 {
   }
 }
 
-/* ===== Promo grid (Products) — Portrait friendly + Image Zoom ===== */
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 16px;
+/* ===== Promo grid (Products) — PROMO STYLE ===== */
+.product-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 22px;
 }
 
-.product-grid .product {
-  grid-column: span 4;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  background: var(--panel-2);
-  border: 1px solid rgba(255,255,255,.06);
-  border-radius: 14px;
-  padding: 14px;
-  transition: transform .25s ease, box-shadow .25s ease;
+.product-grid .product{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  background: linear-gradient(145deg, rgba(255,90,90,.12), rgba(255,165,0,.08)); /* subtil dar mai "cald" */
+  border: 2px solid rgba(255,70,70,.5);  /* bordură roșie transparentă */
+  border-radius:16px;
+  padding:14px;
+  position:relative;        /* pt badge + stacking context control */
+  z-index:0;                /* baza pentru ordonare */
+  overflow:visible;         /* nu tăia imaginea când e scalată */
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
 }
 
-.product-grid .product:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0,0,0,.2);
+.product-grid .product:hover{
+  transform: translateY(-6px) scale(1.02);
+  border-color: rgba(255,70,70,.9);
+  box-shadow: 0 10px 24px rgba(255,70,70,.35);
+}
+
+/* Badge promo colț dreapta-sus — întotdeauna deasupra */
+.product-grid .product::before{
+  content:"PROMO";
+  position:absolute;
+  top:10px;
+  right:-8px;
+  z-index:3; /* peste imagine */
+  background:linear-gradient(135deg, #ff4d4d, #ff9900);
+  color:#fff;
+  font-size:0.75rem;
+  font-weight:700;
+  padding:4px 10px;
+  border-radius: 0 8px 0 8px;
+  box-shadow:0 3px 6px rgba(0,0,0,.25);
+  transform:rotate(3deg);
 }
 
 /* imagine portret — se vede întreaga poză; zoom doar la hover pe card */
-.product-grid .product .thumb {
-  display: block;                /* elimină spațiul inline al img */
-  width: 100%;
-  height: auto;                  /* lasă înălțimea naturală */
-  object-fit: contain;           /* fără tăiere */
-  background: rgba(255,255,255,.03);
-  border-radius: 10px;
-  padding: 6px;
+.product-grid .product .thumb{
+  display:block;
+  width:100%;
+  aspect-ratio: 3 / 4;   /* portret */
+  object-fit: contain;   /* fără tăiere */
+  background: rgba(255,255,255,.1);
+  border-radius:10px;
+  padding:6px;
+  position:relative;
+  z-index:1;             /* sub badge-ul ::before */
   transition: transform .45s cubic-bezier(.2,.7,.2,1);
   will-change: transform;
 }
 
-.product-grid .product:hover .thumb {
-  transform: scale(1.06);        /* zoom subtil pe imagine */
+.product-grid .product:hover .thumb{
+  transform: scale(1.03);
 }
 
 /* meta & preț */
-.product-grid .price {
-  font-weight: 900;
-  color: color-mix(in oklab, var(--warn), white 15%);
+.product-grid .price{
+  font-weight:900;
+  font-size:1.05rem;
+  color:#ff4d4d; /* roșu clar pt preț promo */
+  text-shadow: 0 0 6px rgba(255,80,80,.4);
 }
 
-.product-grid .product .meta {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.product-grid .product .meta{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
   color: var(--muted);
-  font-size: .95rem;
+  font-size:.95rem;
 }
 
-/* Responsive */
-@media (max-width: 900px) {
-  .product-grid .product {
-    grid-column: span 12;
+/* Mobile */
+@media (max-width: 900px){
+  .product-grid{
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   }
 }
 
-/* Respectă preferința de reduce motion */
-@media (prefers-reduced-motion: reduce) {
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce){
   .product-grid .product,
-  .product-grid .product .thumb {
-    transition: none !important;
+  .product-grid .product .thumb{
+    transition:none !important;
   }
 }
-
-/* ===== Legacy Masonry Gallery (kept if you still use .gallery elsewhere) ===== */
 
 /* ===== Testimonials ===== */
 .row {
@@ -394,7 +420,7 @@ h1 {
 
 /* ===== CTA Bar ===== */
 .cta-bar{
-  position:sticky;bottom:0;z-index:40;
+  position:relative;
   background:linear-gradient(180deg,rgba(16,19,24,.6),rgba(16,19,24,.9));
   backdrop-filter:blur(8px);
   border-top:1px solid rgba(255,255,255,.06);
@@ -430,7 +456,12 @@ footer a{color:var(--muted)}
   justify-content:center;    /* use 'start' for left align */
   align-items:start;
 }
-/* neutralize legacy grid spans */
+
+.center-btn{
+  display: flex;
+  justify-content: center; /* centers horizontally */
+  margin: 2rem 0;          /* optional spacing */
+}
 
 /* tiles + hover */
 #legacy-gallery a:focus-visible{ outline:2px solid #000; outline-offset:2px; }
@@ -1765,7 +1796,7 @@ header{
   text-decoration: none;
 }
 .brand img{
-  height: 36px;                  /* dimensiune implicită */
+  height: 72px;                  /* dimensiune implicită */
 }
 
 /* Linkuri */
@@ -1801,7 +1832,7 @@ header{
 /* ===== Mobile (≤ 900px) ===== */
 @media (max-width: 900px){
   .nav{ padding: 0.5rem 0.9rem; }     /* și mai compact */
-  .brand img{ height: 28px; }         /* logo mai mic pe mobil */
+  .brand img{ height: 56px; }         /* logo mai mic pe mobil */
   .nav-cta .btn{ padding: .5rem .7rem; font-size: .9rem; }
   .nav-cta .hide-mobile{ display: none !important; }  /* ascunde butoanele mari dacă ai clasa */
 

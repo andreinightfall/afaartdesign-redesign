@@ -250,7 +250,7 @@
       <div class="grid product-grid">
 
         <!-- Calota Gold -->
-        <article class="product magnetic-card">
+        <article class="product">
           <img class="thumb" src="assets/img/promo-calotagold.jpg" alt="Calota Gold 60×120" loading="lazy" />
           <div class="meta"><strong>Calota Gold • 60×120</strong><span class="price">69 RON/mp</span></div>
         </article>
@@ -262,37 +262,37 @@
         </article>
 
         <!-- Plazzo -->
-        <article class="product magnetic-card">
+        <article class="product">
           <img class="thumb" src="assets/img/promo-plazzo.jpeg" alt="Plazzo 60×120" loading="lazy" />
           <div class="meta"><strong>Plazzo • 60×120</strong><span class="price">75 RON/mp</span></div>
         </article>
 
         <!-- Naxo Aqua -->
-        <article class="product magnetic-card">
+        <article class="product">
           <img class="thumb" src="assets/img/promo-naxo.jpeg" alt="Naxo Aqua 60×120" loading="lazy" />
           <div class="meta"><strong>Naxo Aqua • 60×120</strong><span class="price">75 RON/mp</span></div>
         </article>
 
         <!-- Moro Black -->
-        <article class="product magnetic-card">
+        <article class="product">
           <img class="thumb" src="assets/img/promo-moroblack.jpg" alt="Moro Black 60×120" loading="lazy" />
           <div class="meta"><strong>Moro Black • 60×120</strong><span class="price">75 RON/mp</span></div>
         </article>
 
         <!-- Platinum Black -->
-        <article class="product magnetic-card">
+        <article class="product">
           <img class="thumb" src="assets/img/promo-platinumblack.jpg" alt="Platinum Black 60×120" loading="lazy" />
           <div class="meta"><strong>Platinum Black • 60×120</strong><span class="price">75 RON/mp</span></div>
         </article>
 
         <!-- Brazil 1 -->
-        <article class="product magnetic-card">
+        <article class="product">
           <img class="thumb" src="assets/img/promo-brazil.jpeg" alt="Brazil 1 60.5×121" loading="lazy" />
           <div class="meta"><strong>Brazil 1 • 60.5×121</strong><span class="price">79,99 RON/mp</span></div>
         </article>
 
         <!-- Aspire Gold -->
-        <article class="product magnetic-card">
+        <article class="product">
           <img class="thumb" src="assets/img/promo-aspiregold.jpg" alt="Aspire Gold 60×120" loading="lazy" />
           <div class="meta"><strong>Aspire Gold • 60×120</strong><span class="price">79,99 RON/mp</span></div>
         </article>
@@ -338,15 +338,17 @@
         Câteva dintre cele mai tari lucrări ale noastre 😎 Apasă butonul pentru a afișa/ascunde galeria.
       </p>
 
-      <button
-        id="toggle-gallery"
-        type="button"
-        class="btn btn-outline"
-        aria-controls="gallery-section"
-        aria-expanded="false">
-        <i class="fa-solid fa-images" aria-hidden="true"></i>
-        <span class="label">Vezi galeria</span>
-      </button>
+      <div class="center-btn">
+        <button
+          id="toggle-gallery"
+          type="button"
+          class="btn btn-outline"
+          aria-controls="gallery-section"
+          aria-expanded="false">
+          <i class="fa-solid fa-images" aria-hidden="true"></i>
+          <span class="label">Vezi galeria</span>
+        </button>
+      </div>
 
       <div id="gallery-section" hidden>
         <div id="legacy-gallery"></div>
@@ -951,7 +953,7 @@
     const dotsWrap  = spot.querySelector('.spot-dots');
 
     const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const DURATION = 4500;
+    const DURATION = 3000;
     let idx = 0, timer = null, showingA = true;
 
     const dots = slides.map((_, i) => {
@@ -1130,7 +1132,6 @@
   <script type="module" src="assets/js/gallery.js"></script>
   <script type="module" src="assets/js/gallery-toggle.js"></script>
   <script type="module" src="assets/js/modal-control.js"></script>
-  <script src="assets/js/cart.js"></script>
 
 </body>
 </html>
